@@ -17,7 +17,7 @@ describe('Account Class Tests: ', () => {
             // Act
             const testAccount = new Account();
             // Assert
-            expect(testAccount.getBalance()).toBe(expected);
+            expect(testAccount.getBalance()).toEqual(expected);
         });
 
         it('1.3 Should have a transactions property in an account initialized as an object', () => {
@@ -26,10 +26,10 @@ describe('Account Class Tests: ', () => {
             // Act
             const testAccount = new Account();
             // Assert
-            expect(testAccount.getTransactions()).toBe(expected);
+            expect(testAccount.getTransactions()).toEqual(expected);
         }); 
 
-        
+
     });  
     
 

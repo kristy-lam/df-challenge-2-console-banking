@@ -1,6 +1,7 @@
 export default class Account { 
     // Properties
     #balance;
+    #transactions = {};
 
     constructor(balance = 0) {
         this.#balance = balance;
@@ -8,5 +9,7 @@ export default class Account {
 
     // Behaviours
     getBalance() { return this.#balance; }
+
+    getTransactions() { return this.#transactions; }
 
 };

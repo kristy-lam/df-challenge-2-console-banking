@@ -52,6 +52,16 @@ describe('Account Class Tests: ', () => {
             expect(testAccount.getBalance()).toEqual(expected);
         });
 
+        it('1.6 Should only allow a positive amount in the deposit method', () => {
+            // Arrange            
+            const expected = 0;
+            // Act
+            const testAccount = new Account();
+            testAccount.deposit('10/01/2012', -500);
+            // Assert
+            expect(testAccount.getBalance()).toEqual(expected);
+        });
+
     });  
 
 });

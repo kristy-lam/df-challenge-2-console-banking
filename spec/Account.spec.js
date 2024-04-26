@@ -44,12 +44,12 @@ describe('Account Class Tests: ', () => {
 
         it('1.5 Should only allow a number in the deposit method', () => {
             // Arrange            
-            const expected = '1000';
+            const expected = 0;
             // Act
             const testAccount = new Account();
             testAccount.deposit('10/01/2012', '1000');
             // Assert
-            expect(testAccount.getBalance()).toEqual(0);
+            expect(testAccount.getBalance()).toEqual(expected);
         });
 
     });  

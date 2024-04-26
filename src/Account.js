@@ -12,8 +12,10 @@ export default class Account {
 
     getTransactions() { return this.#transactions; }
 
-    deposit(date, amount) {
-        this.#balance += amount;
+    deposit (date, amount) {
+        if (typeof amount === 'number') {
+            this.#balance += amount;
+        }        
     }
 
 };

@@ -12,4 +12,8 @@ export default class Account {
 
     getTransactions() { return this.#transactions; }
 
+    deposit(date, amount) {
+        this.#balance += amount;
+    }
+
 };

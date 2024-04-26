@@ -36,7 +36,7 @@ describe('Account Class Tests: ', () => {
             const testAccount = new Account();
             testAccount.deposit('10/01/2012', 1000);
             // Assert
-            expect(testAccount.getBalance).toEqual(expected);
+            expect(testAccount.getBalance()).toEqual(expected);
         }); 
 
 

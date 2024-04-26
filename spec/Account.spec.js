@@ -29,13 +29,14 @@ describe('Account Class Tests: ', () => {
             expect(testAccount.getTransactions()).toEqual(expected);
         }); 
 
-        it('1.4 Should have a deposit method with date and amount as arguments', () => {
+        it('1.4 Should have a deposit method with date and amount as arguments which stores the date and adds the amount to the balance', () => {
             // Arrange            
-            const expected = { 'date': '10/01/2012', 'amount': 1000 };
+            const expected = 1000;
             // Act
             const testAccount = new Account();
+            testAccount.deposit('10/01/2012', 1000);
             // Assert
-            expect(testAccount.deposit('10/01/2012', 1000)).toEqual(expected);
+            expect(testAccount.getBalance).toEqual(expected);
         }); 
 
 

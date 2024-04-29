@@ -11,6 +11,9 @@ export default class Transaction {
        
     }
 
-    static get
+    getDate = () => { return this.#date }
+
+    setDate = (newDate) => { this.#date = newDate }
+        
             
 }

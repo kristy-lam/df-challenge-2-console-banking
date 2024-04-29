@@ -9,6 +9,20 @@ describe('Transaction Class Tests: ', () => {
             expect(() => {new Transaction()}).toThrowError(TypeError, 'Cannot construct abstract instances directly');
         });
 
+        it('2.2 Should have the private property of date initialized to an instance of the DateGenerator class', () => {
+            // Arrange
+            // Create spy object as date
+            let testDateGenerator = jasmine.createSpyObj('testDateGenerator', {
+                getDate: '10/01/2012',
+            })
+            // Act
+            Transaction.setDate(() => {testDateGenerator.getDate()});
+            // Assert
+            expect(Transaction.getDate()).toEqual('10/01/2012');
+        });
+
+    
+
     });
 
 });

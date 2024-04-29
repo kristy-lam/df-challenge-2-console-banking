@@ -14,7 +14,8 @@ export default class Account {
 
     deposit (date, amount) {
         if (typeof amount === 'number' && amount > 0) {
-            this.#balance += amount;
+            let updatedBalance = this.#balance += amount;
+            return [date, amount, updatedBalance];
         }
     }
 

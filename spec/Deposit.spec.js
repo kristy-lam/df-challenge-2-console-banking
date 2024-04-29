@@ -18,9 +18,9 @@ describe('Deposit Class Tests: ', () => {
                 getDate: '10/01/2012',
             })
             // Act            
-            actual = testDeposit.getDate(testDateGenerator.getDate());
+            testDeposit.setDate(testDateGenerator.getDate());
             // Assert
-            expect(actual).toEqual('10/01/2012');
+            expect(testDeposit.getDate()).toEqual('10/01/2012');
         })
         
     });

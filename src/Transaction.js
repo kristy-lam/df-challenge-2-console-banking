@@ -10,5 +10,7 @@ export default class Transaction {
         this.#date = date;
        
     }
+
+    static get
             
 }

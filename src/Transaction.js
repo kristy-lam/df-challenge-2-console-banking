@@ -13,6 +13,7 @@ export default class Transaction {
 
     getDate = () => { return this.#date }
 
+    // Setter created for testing only
     setDate = (newDate) => { this.#date = newDate }
         
             

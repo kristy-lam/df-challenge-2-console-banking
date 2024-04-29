@@ -31,7 +31,7 @@ describe('Account Class Tests: ', () => {
 
     });  
 
-    describe('Deposit Method Tests: ', () => {
+    describe('Deposit Method Functionality Tests: ', () => {
         it('1.4 Should have a deposit method with date and amount as arguments which stores the date and adds the amount to the balance', () => {
             // Arrange            
             const expected = 1000;
@@ -42,7 +42,7 @@ describe('Account Class Tests: ', () => {
             expect(testAccount.getBalance()).toEqual(expected);
         });
 
-        it('1.5 Should only allow a number in the deposit method', () => {
+        it('1.5 Should only allow a number as amount in the deposit method', () => {
             // Arrange            
             const expected = 0;
             // Act

@@ -30,6 +30,14 @@ describe('Deposit Class Tests: ', () => {
             // Assert
             expect(testDeposit.getAmount()).toEqual(0);
         })
+
+        it('2.5 Should have a private property of balance initialized to 0', () => {
+            // Arrange
+            const testDeposit = new Deposit();
+            // Act            
+            // Assert
+            expect(testDeposit.getBalance()).toEqual(0);
+        })
         
     });
     

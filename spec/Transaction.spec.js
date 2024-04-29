@@ -1,11 +1,11 @@
 describe('Transaction Class Tests: ', () => {
     describe('Transaction Initialization Tests: ', () => {
-        it('2.1 Should be an instance of the Deposit class, which is a sub class of the Transaction class', () => {
+        it('2.1 Should have a Transaction class which throws an error if an instance of it is created', () => {
             // Arrange
             // Act
-            const testDeposit = new Deposit();
+            const testTransaction = new Transaction();
             // Assert
-            expect(testDeposit).toBeInstanceOf(Deposit);
+            expect(testTransaction).toThrowError(TypeError, "Cannot construct abstract instances directly");
         });
 
     });

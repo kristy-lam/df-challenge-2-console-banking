@@ -1,3 +1,5 @@
+import Deposit from "../src/Deposit.js";
+
 describe('Deposit Class Tests: ', () => {
     describe('Deposit Initialization Tests: ', () => {
         it('2.2 Should be an instance of the Deposit class which is a sub class of the Transaction class', () => {

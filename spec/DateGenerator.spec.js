@@ -21,7 +21,7 @@ describe('Date Generator Class Tests: ', () => {
             date = date.padStart(2, '0');  // Add '0' if date is only one digit
             const expected = `${date}/${month}/${year}`;
             // Act
-            const actual = DateGenerator.generateDate();
+            const actual = DateGenerator.generateToday();
             // Assert
             expect(actual).toEqual(expected);
         })

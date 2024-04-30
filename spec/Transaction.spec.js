@@ -47,9 +47,17 @@ describe('Transaction Class Tests: ', () => {
             expect(testTransaction.getType()).toEqual(null);
         })
 
-        
-
-    
+        it('2.7 Should store output of the deposit method of the Account class as an instance of the Transaction class', () => {
+            // Arrange
+            const testAccount = jasmine.createSpyObj('testAccount', {
+                testDepositOutput: ['10/01/2012', 1000, 1000, 'deposit']
+            })
+            // Act
+            const testTransaction = new Transaction(testAccount.testDepositOutput)
+            // Assert
+            expect(testTransaction).toBeInstanceOf(Transaction);
+            console.log(testTransaction);
+        });    
 
     });
 

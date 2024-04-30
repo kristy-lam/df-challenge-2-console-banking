@@ -14,9 +14,10 @@ export default class Account {
 
     deposit (date, amount) {
         if (typeof amount === 'number' && amount > 0) {
-            let updatedBalance = this.#balance += amount;
-            let type = 'deposit';
-            return [date, amount, updatedBalance, type];
+            const updatedBalance = this.#balance += amount;
+            const type = 'deposit';
+            const result = [date, amount, updatedBalance, type];
+            return result;
         }
     }
 

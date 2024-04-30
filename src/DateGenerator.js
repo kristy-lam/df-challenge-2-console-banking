@@ -1,4 +1,5 @@
 export default class DateGenerator{
+    
     constructor() {
         if (new.target === DateGenerator) {
             throw new TypeError('Cannot instantiate abstract Date Generator class');
@@ -21,20 +22,9 @@ export default class DateGenerator{
         return result;
     }
 
-    static validateInput(dateInput) {
-        return !isNaN(new Date(dateInput));
-    }
-
-    static generateDate(dateInput) {
-        if (dateInput === undefined) {      
-            const todayArr = DateGenerator.getToday();
-            const formattedDate = DateGenerator.dateFormatter(...todayArr);
-            return formattedDate;
-        } else {
-            const validationResult = DateGenerator.validateInput(dateInput);
-            const result = validationResult ? dateInput : Error('Input must be in yyyy, month, dd format, e.g. 2012, January, 10 for 10th January 2012')
-            
-        }
-        
+    static generateDate() {
+        const todayArr = DateGenerator.getToday();
+        const formattedDate = DateGenerator.dateFormatter(...todayArr);
+        return formattedDate;
     }
 }

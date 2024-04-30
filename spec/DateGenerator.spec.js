@@ -26,21 +26,16 @@ describe('Date Generator Class Tests: ', () => {
             expect(actual).toEqual(expected);
         })
 
-        it('3.3 Should be able to generate a custom date using the generateDate method if a parameter is provided', () => {
+        it('3.3 Should be able to get default dates for initialisation of the terminal', () => {
             // Arrange
-            const expected = '10/01/2012'
+            const expected = ['10/01/2012', '13/01/2012', '14/01/2012'];
             // Act
-            const actual = DateGenerator.generateDate(2012, January, 10);
+            const defaultDate1 = DateGenerator.getDefaultDate1();
+            const defaultDate2 = DateGenerator.getDefaultDate2();
+            const defaultDate3 = DateGenerator.getDefaultDate3();
+            const actual = Array(defaultDate1, defaultDate2, defaultDate3);
             // Assert
             expect(actual).toEqual(expected);
-        })
-
-        it('3.4 Should only allow input in yyyy, month, dd format as the parameter in the generateDate method', () => {
-            // Arrange
-            // Act
-            const actual = DateGenerator.generateDate(2012, January, 10)
-            // Assert
-            expect(() => { actual; }).toThrowError(Error, 'Input must be in yyyy, month, dd format, e.g. 2012, January, 10 for 10th January 2012');
         })
 
     })

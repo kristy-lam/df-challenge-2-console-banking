@@ -26,5 +26,14 @@ describe('Date Generator Class Tests: ', () => {
             expect(actual).toEqual(expected);
         })
 
+        it('3.3 Should be able to generate a custom date using the generateDate method if a parameter is provided', () => {
+            // Arrange
+            const expected = '10/01/2012'
+            // Act
+            const actual = DateGenerator.generateDate(2012, 1, 10);
+            // Assert
+            expect(actual).toEqual(expected);
+        })
+
     })
 })

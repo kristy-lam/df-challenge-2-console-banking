@@ -6,10 +6,6 @@ export default class Transaction {
 
     // Constructor
     constructor(date, amount = 0, updatedBalance = 0) {
-        // Workaround to simulate an abstract class
-        if (new.target === Transaction) {
-            throw new TypeError('Cannot construct abstract instances directly');
-        }
         this.#date = date;
         this.#amount = amount;  
         this.#updatedBalance = updatedBalance;

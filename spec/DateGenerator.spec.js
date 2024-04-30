@@ -35,5 +35,13 @@ describe('Date Generator Class Tests: ', () => {
             expect(actual).toEqual(expected);
         })
 
+        it('3.4 Should only allow input in yyyy, mm, dd format as the parameter in the generateDate method', () => {
+            // Arrange
+            // Act
+            const actual = DateGenerator.generateDate(1, 10, 2012)
+            // Assert
+            expect(() => { actual; }).toThrowError(Error, 'Input must be in "yyyy, mm, dd" format, e.g. "2012, 01, 10" for 10th January 2012');
+        })
+
     })
 })

@@ -12,13 +12,19 @@ export default class DateGenerator{
         return formattedDate;        
     }
 
+    static getToday() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = today.getMonth() + 1;  // Because May is outputted as '4'    
+        const date = today.getDate();
+        const result = [year, month, date];
+        return result;
+    }
+
     static generateDate(yearInput, monthInput, dateInput) {
         if (yearInput === undefined && monthInput === undefined && dateInput === undefined) {      
-            const today = new Date();
-            const year = today.getFullYear();
-            const month = today.getMonth() + 1;  // Because May is outputted as '4'    
-            const date = today.getDate();
-            const formattedDate = DateGenerator.dateFormatter(year, month, date);
+            const todayArr = DateGenerator.getToday();
+            const formattedDate = DateGenerator.dateFormatter(...todayArr);
             return formattedDate;
         } else {
             const formattedDate = DateGenerator.dateFormatter(yearInput, monthInput, dateInput);

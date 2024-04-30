@@ -64,9 +64,9 @@ describe('Transaction Class Tests: ', () => {
             let testAccount = jasmine.createSpyObj("testAccount", {
                 constructorInput: ['10/01/2012', 1000, 1000, 'deposit']
             });
-            // As the spy object testAccount.constructorInput is not iterable,
-            // a custom iterator is created to imitate what should be in 
-            // the constructorInput property
+            /* As the spy object property testAccount.constructorInput is not             
+            iterable, a custom iterator is created to imitate what should be
+            in the constructorInput property */
             function* constructorInputIterator() {
                 yield testAccount.constructorInput[0] = '10/01/2012';
                 yield testAccount.constructorInput[1] = 1000;

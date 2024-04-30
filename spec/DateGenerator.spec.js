@@ -12,7 +12,14 @@ describe('Date Generator Class Tests: ', () => {
 
         it('3.2 Should be able to generate today\'s date using the generateDate method', () => {
             // Arrange
-            const expected = '10/01/2012';
+            const today = new Date();
+            // Format today's date into 'dd/mm/yyyy' format
+            const year = today.getFullYear();
+            let month = String(today.getMonth() + 1);
+            month = month.padStart(2, '0');
+            let day = String(today.getDate());
+            day = day.padStart(2, '0');
+            const expected = `${day}/${month}/${year}`;
             // Act
             const actual = DateGenerator.generateDate();
             // Assert

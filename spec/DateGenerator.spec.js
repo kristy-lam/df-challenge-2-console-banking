@@ -15,10 +15,10 @@ describe('Date Generator Class Tests: ', () => {
             const today = new Date();
             // Format today's date into 'dd/mm/yyyy' format
             const year = today.getFullYear();
-            let month = String(today.getMonth() + 1);
-            month = month.padStart(2, '0');
+            let month = String(today.getMonth() + 1);  // Because May is outputted as '4'
+            month = month.padStart(2, '0');  // Add '0' if month is only one digit
             let day = String(today.getDate());
-            day = day.padStart(2, '0');
+            day = day.padStart(2, '0');  // Add '0' if date is only one digit
             const expected = `${day}/${month}/${year}`;
             // Act
             const actual = DateGenerator.generateDate();

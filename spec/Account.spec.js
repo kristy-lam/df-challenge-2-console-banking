@@ -2,7 +2,7 @@ import Account from "../src/Account.js";
 
 describe('Account Class Tests: ', () => { 
 
-    describe('Account Initialization Tests: ', () => {        
+    describe('Account Initialisation Tests: ', () => {        
         it('1.1 Should be an instance of the Account class', () => {
             // Arrange
             // Act
@@ -62,10 +62,10 @@ describe('Account Class Tests: ', () => {
             expect(testAccount.getBalance()).toEqual(expected);
         });
 
-        it('2.6 Should return an array of date, amount and updated balance when the deposit method of the Account class is called', () => {
+        it('2.6 Should return an array of date, amount, updated balance and type when the deposit method of the Account class is called', () => {
             // Arrange            
             const testAccount = new Account();
-            let expected = ['10/01/2012', 1000, 1000];
+            let expected = ['10/01/2012', 1000, 1000, 'deposit'];
             // Act
             // Assert
             expect(testAccount.deposit('10/01/2012', 1000)).toEqual(expected);

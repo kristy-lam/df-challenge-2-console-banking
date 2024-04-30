@@ -1,7 +1,7 @@
 import Transaction from "../src/Transaction.js";
 
 describe('Transaction Class Tests: ', () => {
-    describe('Transaction Initialization Tests: ', () => {
+    describe('Transaction Initialisation Tests: ', () => {
         it('2.1 Should be an instance of the Transaction class', () => {
             // Arrange
             // Act

@@ -11,7 +11,7 @@ export default class Transaction {
         this.#amount = amount;  
         this.#updatedBalance = updatedBalance;
         this.#type = type;
-    }
+    };
 
     // Behaviours
     getDate = () => { return this.#date };

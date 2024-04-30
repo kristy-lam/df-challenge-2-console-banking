@@ -59,14 +59,30 @@ describe('Transaction Class Tests: ', () => {
         });    
 
         it('2.8 Should store output of the deposit method of the Account class and create an instance of the Transaction class with the correct properties', () => {
-            // Arrange
-            const testAccount = jasmine.createSpyObj('testAccount', {
-                testDepositOutput: ['10/01/2012', 1000, 1000, 'deposit']
-            })
+            // Arrange            
+            const expected = ['10/01/2012', 1000, 1000, 'deposit'];
+            let testAccount = jasmine.createSpyObj("testAccount", {
+                constructorInput: ['10/01/2012', 1000, 1000, 'deposit']
+            });
+            // As the spy object testAccount.constructorInput is not iterable,
+            // a custom iterator is created to imitate what should be in 
+            // the constructorInput property
+            function* constructorInputIterator() {
+                yield testAccount.constructorInput[0] = '10/01/2012';
+                yield testAccount.constructorInput[1] = 1000;
+                yield testAccount.constructorInput[2] = 1000;
+                yield testAccount.constructorInput[3] = 'deposit';
+            }
+            testAccount.constructorInput = constructorInputIterator();
             // Act
-            const testTransaction = new Transaction(testAccount.testDepositOutput)
+            const testTransaction = new Transaction(...testAccount.constructorInput);
+            const date = testTransaction.getDate();
+            const amount = testTransaction.getAmount();
+            const updatedBalance = testTransaction.getUpdatedBalance();
+            const type = testTransaction.getType();
+            const actual = [date, amount, updatedBalance, type];
             // Assert
-            expect(Object.values(testTransaction)).toEqual('10/01/2012,1000,1000,deposit');
+            expect(actual).toEqual(expected);
         });
 
     });

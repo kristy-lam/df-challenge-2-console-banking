@@ -44,22 +44,18 @@ describe('Account Class Tests: ', () => {
 
         it('1.5 Should only allow a number as amount in the deposit method', () => {
             // Arrange            
-            const expected = 0;
-            // Act
             const testAccount = new Account();
-            testAccount.deposit('10/01/2012', '1000');
+            // Act
             // Assert
-            expect(testAccount.getBalance()).toEqual(expected);
+            expect(() => (testAccount.deposit('10/01/2012', '1000'))).toThrowError(Error, 'Must provide a number');
         });
 
         it('1.6 Should only allow a positive amount in the deposit method', () => {
             // Arrange            
-            const expected = 0;
-            // Act
             const testAccount = new Account();
-            testAccount.deposit('10/01/2012', -500);
+            // Act            
             // Assert
-            expect(testAccount.getBalance()).toEqual(expected);
+            expect(() => (testAccount.deposit('10/01/2012', -500))).toThrowError(Error, 'Must provide a positive amount');
         });
 
         it('1.7 Should only allow the deposit method to run if date is not falsy', () => {
@@ -76,6 +72,14 @@ describe('Account Class Tests: ', () => {
             // Act
             // Assert
             expect(() => (testAccount.deposit('10/01/2012', undefined))).toThrowError(Error, 'Must provide an amount');
+        });
+
+        it('1.9 Should return error message if both date and amount are falsy', () => {
+            // Arrange
+            const testAccount = new Account();
+            // Act
+            // Assert
+            expect(() => (testAccount.deposit(undefined, undefined))).toThrowError(Error, 'Must provide input');
         });
 
         it('2.6 Should return an array of date, amount, updated balance and type when the deposit method of the Account class is called', () => {

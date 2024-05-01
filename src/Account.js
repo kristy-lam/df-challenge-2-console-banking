@@ -22,6 +22,10 @@ export default class Account {
             throw Error('Must provide a date');
         } else if (!amount) {
             throw Error('Must provide an amount');
+        } else if (typeof amount !== 'number') {
+            throw Error('Must provide a number');
+        } else if (amount <= 0) {
+            throw Error('Must provide a positive amount');
         }
     }
 

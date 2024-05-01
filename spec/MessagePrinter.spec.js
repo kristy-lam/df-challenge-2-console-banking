@@ -19,9 +19,19 @@ describe('Message Printer Class Tests: ', () => {
         it('4.2 Should console log a success message when a deposit is successful', () => {
             // Arrange
             testAccount.actionType = 'deposit';
+            const expected = 'Your deposit is successful.';
             // Act
             // Assert
-            expect(MessagePrinter.printSuccessMessage(testAccount.actionType)).toEqual('Your deposit is successful.');
+            expect(MessagePrinter.printSuccessMessage(testAccount.actionType)).toEqual(expected);
+        })
+
+        it('6.1 Should console log a success message when a withdrawal is successful', () => {
+            // Arrange
+            testAccount.actionType = 'withdrawal';
+            const expected = 'Your withdrawal is successful.';
+            // Act
+            // Assert
+            expect(MessagePrinter.printSuccessMessage(testAccount.actionType)).toEqual(expected);
         })
 
     })

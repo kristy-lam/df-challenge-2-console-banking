@@ -31,7 +31,9 @@ export default class Account {
     }
 
     withdrawal(date, amount) {
-        if (!date && amount) {
+        if (!date && !amount) {
+            throw Error('Must provide appropriate inputs');
+        } else if (!date && amount) {
             throw Error('Must provide a date');
         } else if (typeof amount !== 'number') {
             throw Error('Must provide a number');

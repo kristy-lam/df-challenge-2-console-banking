@@ -79,7 +79,7 @@ describe('Account Class Tests: ', () => {
             const testAccount = new Account();
             // Act
             // Assert
-            expect(() => (testAccount.deposit(undefined, undefined))).toThrowError(Error, 'Must provide input');
+            expect(() => (testAccount.deposit(undefined, undefined))).toThrowError(Error, 'Must provide inputs');
         });
 
         it('2.6 Should return an array of date, amount, updated balance and type when the deposit method of the Account class is called', () => {

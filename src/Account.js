@@ -18,14 +18,18 @@ export default class Account {
             const type = 'deposit';
             const result = [date, amount, updatedBalance, type];
             return result;
-        } else if (!date) {
+        } else if (!date && !amount) {
+            throw Error('Must provide inputs');
+        } else if (!date && amount) {
             throw Error('Must provide a date');
-        } else if (!amount) {
+        } else if (date && !amount) {
             throw Error('Must provide an amount');
         } else if (typeof amount !== 'number') {
             throw Error('Must provide a number');
         } else if (amount <= 0) {
             throw Error('Must provide a positive amount');
+        } else {
+            throw Error('Must provide appropriate inputs');
         }
     }
 

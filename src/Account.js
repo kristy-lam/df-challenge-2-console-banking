@@ -29,7 +29,7 @@ export default class Account {
         } else if (amount <= 0) {
             throw Error('Must provide a positive amount');
         } else {
-            throw Error('Must provide appropriate inputs');
+            throw Error('Something went wrong, please try again.');
         }
     }
 

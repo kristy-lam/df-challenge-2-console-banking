@@ -123,5 +123,12 @@ describe('Account Class Tests: ', () => {
             // Assert
             expect(() => (testAccount.withdrawal('11/01/2012', -400))).toThrowError(Error, 'Must provide a positive amount');
         });
+
+        it('5.4 Should only allow the withdrawal method to run if date is not falsy', () => {
+            // Arrange
+            // Act
+            // Assert
+            expect(() => (testAccount.withdrawal(null, 600))).toThrowError(Error, 'Must provide a date');
+        });
     });
 });

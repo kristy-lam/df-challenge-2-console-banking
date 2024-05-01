@@ -72,14 +72,14 @@ describe('Account Class Tests: ', () => {
             // Arrange
             // Act
             // Assert
-            expect(() => (testAccount.deposit('10/01/2012', undefined))).toThrowError(Error, 'Must provide an amount');
+            expect(() => (testAccount.deposit('10/01/2012', undefined))).toThrowError(Error, 'Must provide a number');
         });
 
         it('1.9 Should return error message if both date and amount are falsy', () => {
             // Arrange
             // Act
             // Assert
-            expect(() => (testAccount.deposit(undefined, undefined))).toThrowError(Error, 'Must provide inputs');
+            expect(() => (testAccount.deposit(undefined, undefined))).toThrowError(Error, 'Must provide appropriate inputs');
         });
 
         it('2.6 Should return an array of date, amount, updated balance and type when the deposit method of the Account class is called', () => {
@@ -129,6 +129,20 @@ describe('Account Class Tests: ', () => {
             // Act
             // Assert
             expect(() => (testAccount.withdrawal(null, 600))).toThrowError(Error, 'Must provide a date');
+        });
+
+        it('5.5 Should only allow the withdrawal method to run if amount is not falsy', () => {
+            // Arrange
+            // Act
+            // Assert
+            expect(() => (testAccount.withdrawal('11/01/2012', undefined))).toThrowError(Error, 'Must provide a number');
+        });
+
+        it('5.6 Should return error message if both date and amount are falsy', () => {
+            // Arrange
+            // Act
+            // Assert
+            expect(() => (testAccount.withdrawal(null, undefined))).toThrowError(Error, 'Must provide appropriate inputs');
         });
     });
 });

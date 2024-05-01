@@ -72,6 +72,15 @@ describe('Account Class Tests: ', () => {
             expect(testAccount.getBalance()).toEqual(expected);
         });
 
+        it('1.8 Should only allow the deposit method to run if amount is not empty', () => {
+            // Arrange
+            const testAccount = new Account();
+            // Act
+            const actual = testAccount.deposit('10/01/2012', undefined);
+            // Assert
+            expect(() => (actual)).toThrowError(Error, 'Must provide an amount');
+        });
+
         it('2.6 Should return an array of date, amount, updated balance and type when the deposit method of the Account class is called', () => {
             // Arrange            
             const testAccount = new Account();

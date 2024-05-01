@@ -65,15 +65,8 @@ describe('Transaction Class Tests: ', () => {
                 constructorInput: ['10/01/2012', 1000, 1000, 'deposit']
             });
             /* As the spy object property testAccount.constructorInput is not             
-            iterable, a custom iterator is created to imitate what should be
-            in the constructorInput property */
-            function* constructorInputIterator() {
-                yield testAccount.constructorInput[0] = '10/01/2012';
-                yield testAccount.constructorInput[1] = 1000;
-                yield testAccount.constructorInput[2] = 1000;
-                yield testAccount.constructorInput[3] = 'deposit';
-            }
-            testAccount.constructorInput = constructorInputIterator();
+            iterable, it is re-declared below */
+            testAccount.constructorInput = ['10/01/2012', 1000, 1000, 'deposit'];
             // Act
             const testTransaction = new Transaction(...testAccount.constructorInput);
             const date = testTransaction.getDate();

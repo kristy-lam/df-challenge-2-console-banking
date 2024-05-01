@@ -38,19 +38,37 @@ describe('Message Printer Class Tests: ', () => {
     describe('Transaction Formatter Functionality Tests: ', () => {
         it('7.1 Should have a title row for the transactions in the default terminal display as specified in the README file', (() => {
             // Arrange
-            const expected = 'date       || credit  || debit  || balance';
+            const expected = 'date       || credit  || debit  || balance\n';
             // Act
             const actual = MessagePrinter.getTransactionTitleRow();
             // Assert
             expect(actual).toEqual(expected);
         }))
 
-        it('7.2 Should have information of the default transactions ready in the format as specified in the README file', (() => {
+        it('7.2 Should have information of the default deposits ready in the format as specified in the README file', (() => {
             // Arrange
-            const testTransaction = jasmine.createSpyObj('Test Transaction', {
+            let testTransaction = jasmine.createSpyObj('Test Transaction', {
                 output: ['10/01/2012', 1000, 1000, 'deposit']
             })
-            const expected = '10/01/2012 || 1000.00 ||        || 1000.00';
+            /* As the spy object property testAccount.constructorInput is not             
+            iterable, it is re-declared below */
+            testTransaction.output = ['10/01/2012', 1000, 1000, 'deposit'];
+            const expected = '10/01/2012 || 1000.00 ||        || 1000.00';            
+            // Act
+            const actual = MessagePrinter.transactionFormatter(testTransaction.output);
+            // Assert
+            expect(actual).toEqual(expected);
+        }))
+
+        it('7.3 Should have information of the default withdrawal ready in the format as specified in the README file', (() => {
+            // Arrange
+            let testTransaction = jasmine.createSpyObj('Test Transaction', {
+                output: ['14/01/2012', 500, 2500, 'withdrawal']
+            })
+            /* As the spy object property testAccount.constructorInput is not             
+            iterable, it is re-declared below */
+            testTransaction.output = ['14/01/2012', 500, 2500, 'withdrawal'];
+            const expected = '14/01/2012 ||         || 500.00 || 2500.00';            
             // Act
             const actual = MessagePrinter.transactionFormatter(testTransaction.output);
             // Assert

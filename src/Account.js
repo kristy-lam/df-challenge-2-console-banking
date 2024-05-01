@@ -13,11 +13,15 @@ export default class Account {
     getTransactions() { return this.#transactions; }
 
     deposit (date, amount) {
-        if (date !== undefined && typeof amount === 'number' && amount > 0) {
+        if (date && amount && typeof amount === 'number' && amount > 0) {
             const updatedBalance = this.#balance += amount;
             const type = 'deposit';
             const result = [date, amount, updatedBalance, type];
             return result;
+        } else if (!date) {
+            throw Error('Must provide a date');
+        } else if (!amount) {
+            throw Error('Must provide an amount');
         }
     }
 

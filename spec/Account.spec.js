@@ -109,5 +109,12 @@ describe('Account Class Tests: ', () => {
             // Assert
             expect(testAccount.getBalance()).toEqual(expected);
         });
+
+        it('5.2 Should only allow a number as amount in the withdrawal method', () => {
+            // Arrange
+            // Act
+            // Assert
+            expect(() => (testAccount.withdrawal('11/01/2012', '600'))).toThrowError(Error, 'Must provide a number');
+        });
     });
 });

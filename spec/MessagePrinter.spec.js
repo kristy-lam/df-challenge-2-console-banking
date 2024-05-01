@@ -44,5 +44,17 @@ describe('Message Printer Class Tests: ', () => {
             // Assert
             expect(actual).toEqual(expected);
         }))
+
+        it('7.2 Should have information of the default transactions ready in the format as specified in the README file', (() => {
+            // Arrange
+            const testTransaction = jasmine.createSpyObj('Test Transaction', {
+                output: ['10/01/2012', 1000, 1000, 'deposit']
+            })
+            const expected = '10/01/2012 || 1000.00 ||        || 1000.00';
+            // Act
+            const actual = MessagePrinter.transactionFormatter(testTransaction.output);
+            // Assert
+            expect(actual).toEqual(expected);
+        }))
     })
 })

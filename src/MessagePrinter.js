@@ -1,4 +1,7 @@
 export default class MessagePrinter {
+
+    static #transactionTitleRow = 'date       || credit  || debit  || balance';
+
     // Make class abstract
     constructor() {
         if (new.target === MessagePrinter) {
@@ -7,6 +10,9 @@ export default class MessagePrinter {
     }
 
     // Behaviours
+
+    static getTransactionTitleRow() { return MessagePrinter.#transactionTitleRow; }
+
     static printSuccessMessage(type) { 
         const message = `Your ${type} is successful.`;
         return message;

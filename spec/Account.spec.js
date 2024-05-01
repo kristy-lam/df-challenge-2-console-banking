@@ -1,6 +1,8 @@
 import Account from "../src/Account.js";
 
 describe('Account Class Tests: ', () => { 
+
+    // Arrange
     let testAccount;
 
     beforeEach(() => {
@@ -33,8 +35,7 @@ describe('Account Class Tests: ', () => {
             // Act
             // Assert
             expect(testAccount.getTransactions()).toEqual(expected);
-        }); 
-
+        });         
     });  
 
     describe('Deposit Method Functionality Tests: ', () => {

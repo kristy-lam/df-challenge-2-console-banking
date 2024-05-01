@@ -56,7 +56,7 @@ describe('Transaction Class Tests: ', () => {
             const testTransaction = new Transaction(testAccount.testDepositOutput)
             // Assert
             expect(testTransaction).toBeInstanceOf(Transaction);
-        });    
+        });
 
         it('2.8 Should store output of the deposit method of the Account class and create an instance of the Transaction class with the correct properties', () => {
             // Arrange            
@@ -84,7 +84,5 @@ describe('Transaction Class Tests: ', () => {
             // Assert
             expect(actual).toEqual(expected);
         });
-
     });
-
 });

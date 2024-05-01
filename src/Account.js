@@ -24,6 +24,7 @@ export default class Account {
         const type = 'deposit';
         const result = [date, amount, updatedBalance, type];
         // MessagePrinter.printSuccessMessage(type);
+        // return new Transaction(...result);
         return result;
     }
 
@@ -40,7 +41,11 @@ export default class Account {
         const updatedBalance = this.#balance -= amount;
         const type = 'withdrawal';
         const result = [date, amount, updatedBalance, type];
+        // MessagePrinter.printSuccessMessage(type);
+        // return new Transaction(...result);
         return result;
     }
+
+
 
 };

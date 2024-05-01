@@ -33,6 +33,16 @@ describe('Message Printer Class Tests: ', () => {
             // Assert
             expect(MessagePrinter.printSuccessMessage(testAccount.actionType)).toEqual(expected);
         })
-
+    })
+    
+    describe('Transaction Formatter Functionality Tests: ', () => {
+        it('7.1 Should have a title row for the transactions in the default terminal display as specified in the README file', (() => {
+            // Arrange
+            const expected = 'date       || credit  || debit  || balance';
+            // Act
+            const actual = MessagePrinter.getTransactionTitleRow();
+            // Assert
+            expect(actual).toEqual(expected);
+        }))
     })
 })

@@ -24,5 +24,5 @@ export default class Transaction {
     getUpdatedBalance = () => { return this.#updatedBalance };
 
     getType = () => { return this.#type }
-            
+    
 }

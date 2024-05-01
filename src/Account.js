@@ -32,4 +32,11 @@ export default class Account {
         return result;
     }
 
+    withdrawal (date, amount) {
+        const updatedBalance = this.#balance -= amount;
+        const type = 'withdrawal';
+        const result = [date, amount, updatedBalance, type];
+        return result;
+    }
+
 };

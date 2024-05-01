@@ -10,4 +10,17 @@ describe('Message Printer Class Tests: ', () => {
                 'Cannot instantiate abstract Message Printer class');
         })
     })
+
+    describe('Success Messages Functionality Tests: ', () => {
+        it('4.2 Should console log a success message when a deposit is successful', () => {
+            // Arrange
+            const expected = ['10/01/2012', 1000, 1000, 'deposit'];
+            let testAccount = jasmine.createSpyObj("testAccount", {
+                deposit() { '10/01/2012', 1000 }
+            })            
+            // Act
+            // Assert
+            expect(MessagePrinter.printSuccessMessage()).toHaveBeenCalled();
+        })
+    })
 })

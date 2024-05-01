@@ -39,6 +39,8 @@ export default class Account {
             throw Error('Must provide a number');
         } else if (amount <= 0) {
             throw Error('Must provide a positive amount');
+        } else if (amount > this.#balance) {
+            return this.#balance;
         }
         const updatedBalance = this.#balance -= amount;
         const type = 'withdrawal';

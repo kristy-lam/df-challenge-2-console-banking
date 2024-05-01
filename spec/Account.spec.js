@@ -144,5 +144,15 @@ describe('Account Class Tests: ', () => {
             // Assert
             expect(() => (testAccount.withdrawal(null, undefined))).toThrowError(Error, 'Must provide appropriate inputs');
         });
+
+        it('5.7 Should only allow a withdrawal if the amount is not larger than the account balance', () => {
+            // Arrange
+            testAccount.deposit('10/01/2012', 1000);
+            const expected = 1000;
+            // Act
+            testAccount.withdrawal('10/01/2012', 2000);
+            // Assert
+            expect(testAccount.getBalance()).toEqual(expected);
+        });
     });
 });

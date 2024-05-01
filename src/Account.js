@@ -32,7 +32,10 @@ export default class Account {
         return result;
     }
 
-    withdrawal (date, amount) {
+    withdrawal(date, amount) {
+        if (typeof amount !== 'number') {
+            throw Error('Must provide a number');
+        }
         const updatedBalance = this.#balance -= amount;
         const type = 'withdrawal';
         const result = [date, amount, updatedBalance, type];

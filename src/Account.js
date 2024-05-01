@@ -13,7 +13,7 @@ export default class Account {
     getTransactions() { return this.#transactions; }
 
     deposit (date, amount) {
-        if (typeof amount === 'number' && amount > 0) {
+        if (date !== undefined && typeof amount === 'number' && amount > 0) {
             const updatedBalance = this.#balance += amount;
             const type = 'deposit';
             const result = [date, amount, updatedBalance, type];

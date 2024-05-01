@@ -13,12 +13,7 @@ export default class Account {
     getTransactions() { return this.#transactions; }
 
     deposit (date, amount) {
-        if (date && amount && typeof amount === 'number' && amount > 0) {
-            const updatedBalance = this.#balance += amount;
-            const type = 'deposit';
-            const result = [date, amount, updatedBalance, type];
-            return result;
-        } else if (!date && !amount) {
+        if (!date && !amount) {
             throw Error('Must provide inputs');
         } else if (!date && amount) {
             throw Error('Must provide a date');
@@ -28,9 +23,13 @@ export default class Account {
             throw Error('Must provide a number');
         } else if (amount <= 0) {
             throw Error('Must provide a positive amount');
-        } else {
-            throw Error('Something went wrong, please try again.');
         }
+
+        const updatedBalance = this.#balance += amount;
+        const type = 'deposit';
+        const result = [date, amount, updatedBalance, type];
+        // MessagePrinter.printSuccessMessage(type);
+        return result;
     }
 
 };

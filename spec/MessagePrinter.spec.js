@@ -12,15 +12,17 @@ describe('Message Printer Class Tests: ', () => {
     })
 
     describe('Success Messages Functionality Tests: ', () => {
+        let testAccount = jasmine.createSpyObj("testAccount", {
+            actionType: undefined,            
+        })
+
         it('4.2 Should console log a success message when a deposit is successful', () => {
             // Arrange
-            const expected = ['10/01/2012', 1000, 1000, 'deposit'];
-            let testAccount = jasmine.createSpyObj("testAccount", {
-                deposit() { '10/01/2012', 1000 }
-            })            
+            testAccount.actionType = 'deposit';
             // Act
             // Assert
-            expect(MessagePrinter.printSuccessMessage()).toHaveBeenCalled();
+            expect(MessagePrinter.printSuccessMessage(testAccount.actionType)).toEqual('Your deposit is successful.');
         })
+
     })
 })

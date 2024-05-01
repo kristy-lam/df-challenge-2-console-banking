@@ -5,4 +5,11 @@ export default class MessagePrinter {
             throw new TypeError('Cannot instantiate abstract Message Printer class');
         }
     }
+
+    // Behaviours
+    static printSuccessMessage(type) { 
+        const message = `Your ${type} is successful.`;
+        return message;
+    }
+
 }

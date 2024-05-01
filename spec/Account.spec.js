@@ -154,5 +154,13 @@ describe('Account Class Tests: ', () => {
             // Assert
             expect(testAccount.getBalance()).toEqual(expected);
         });
+
+        it('5.8 Should throw error if user makes a withdrawal larger than the account balance', () => {
+            // Arrange
+            testAccount.deposit('10/01/2012', 1000);
+            // Act
+            // Assert
+            expect(() => (testAccount.withdrawal('10/01/2012', 2000))).toThrowError(Error, 'Withdrawal amount must not be larger than balance.');
+        });
     });
 });

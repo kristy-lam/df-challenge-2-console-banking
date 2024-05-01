@@ -17,12 +17,9 @@ export default class Account {
             throw Error('Must provide appropriate inputs');
         } else if (!date && amount) {
             throw Error('Must provide a date');
-        } else if (typeof amount !== 'number') {
-            throw Error('Must provide a number');
-        } else if (amount <= 0) {
-            throw Error('Must provide a positive amount');
+        } else if (amount <= 0 || typeof amount !== 'number') {
+            throw Error('Must provide a positive number');
         }
-
         const updatedBalance = this.#balance += amount;
         const type = 'deposit';
         const result = [date, amount, updatedBalance, type];
@@ -35,12 +32,10 @@ export default class Account {
             throw Error('Must provide appropriate inputs');
         } else if (!date && amount) {
             throw Error('Must provide a date');
-        } else if (typeof amount !== 'number') {
-            throw Error('Must provide a number');
-        } else if (amount <= 0) {
-            throw Error('Must provide a positive amount');
-        } else if (amount > this.#balance) {
-            return this.#balance;
+        } else if (amount <= 0 || typeof amount !== 'number') {
+            throw Error('Must provide a positive number');
+        } else if (amount > this.getBalance()) {
+            throw Error('Withdrawal amount must not be larger than balance');
         }
         const updatedBalance = this.#balance -= amount;
         const type = 'withdrawal';

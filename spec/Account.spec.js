@@ -51,14 +51,14 @@ describe('Account Class Tests: ', () => {
             // Arrange
             // Act
             // Assert
-            expect(() => (testAccount.deposit('10/01/2012', '1000'))).toThrowError(Error, 'Must provide a number');
+            expect(() => (testAccount.deposit('10/01/2012', '1000'))).toThrowError(Error, 'Must provide a positive number');
         });
 
-        it('1.6 Should only allow a positive amount in the deposit method', () => {
+        it('1.6 Should only allow a positive number in the deposit method', () => {
             // Arrange            
             // Act            
             // Assert
-            expect(() => (testAccount.deposit('10/01/2012', -500))).toThrowError(Error, 'Must provide a positive amount');
+            expect(() => (testAccount.deposit('10/01/2012', -500))).toThrowError(Error, 'Must provide a positive number');
         });
 
         it('1.7 Should only allow the deposit method to run if date is not falsy', () => {
@@ -72,7 +72,7 @@ describe('Account Class Tests: ', () => {
             // Arrange
             // Act
             // Assert
-            expect(() => (testAccount.deposit('10/01/2012', undefined))).toThrowError(Error, 'Must provide a number');
+            expect(() => (testAccount.deposit('10/01/2012', undefined))).toThrowError(Error, 'Must provide a positive number');
         });
 
         it('1.9 Should return error message if both date and amount are falsy', () => {
@@ -114,14 +114,14 @@ describe('Account Class Tests: ', () => {
             // Arrange
             // Act
             // Assert
-            expect(() => (testAccount.withdrawal('11/01/2012', '600'))).toThrowError(Error, 'Must provide a number');
+            expect(() => (testAccount.withdrawal('11/01/2012', '600'))).toThrowError(Error, 'Must provide a positive number');
         });
 
-        it('5.3 Should only allow a positive amount in the withdrawal method', () => {
+        it('5.3 Should only allow a positive number in the withdrawal method', () => {
             // Arrange
             // Act
             // Assert
-            expect(() => (testAccount.withdrawal('11/01/2012', -400))).toThrowError(Error, 'Must provide a positive amount');
+            expect(() => (testAccount.withdrawal('11/01/2012', -400))).toThrowError(Error, 'Must provide a positive number');
         });
 
         it('5.4 Should only allow the withdrawal method to run if date is not falsy', () => {
@@ -135,7 +135,7 @@ describe('Account Class Tests: ', () => {
             // Arrange
             // Act
             // Assert
-            expect(() => (testAccount.withdrawal('11/01/2012', undefined))).toThrowError(Error, 'Must provide a number');
+            expect(() => (testAccount.withdrawal('11/01/2012', undefined))).toThrowError(Error, 'Must provide a positive number');
         });
 
         it('5.6 Should return error message if both date and amount are falsy', () => {
@@ -149,10 +149,9 @@ describe('Account Class Tests: ', () => {
             // Arrange
             testAccount.deposit('10/01/2012', 1000);
             const expected = 1000;
-            // Act
-            testAccount.withdrawal('10/01/2012', 2000);
+            // Act            
             // Assert
-            expect(testAccount.getBalance()).toEqual(expected);
+            expect(() => (testAccount.withdrawal('11/01/2012', 2000))).toThrowError();
         });
 
         it('5.8 Should throw error if user makes a withdrawal larger than the account balance', () => {
@@ -160,7 +159,7 @@ describe('Account Class Tests: ', () => {
             testAccount.deposit('10/01/2012', 1000);
             // Act
             // Assert
-            expect(() => (testAccount.withdrawal('10/01/2012', 2000))).toThrowError(Error, 'Withdrawal amount must not be larger than balance.');
+            expect(() => (testAccount.withdrawal('11/01/2012', 1500))).toThrowError(Error, 'Withdrawal amount must not be larger than balance');
         });
     });
 });

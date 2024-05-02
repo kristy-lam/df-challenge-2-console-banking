@@ -39,7 +39,7 @@ describe('Message Printer Class Tests: ', () => {
             const expected = 'Your deposit is unsuccessful - the amount must be a positive number e.g. 100';
             // Act
             // Assert
-            expect(MessagePrinter.printMessage(testAccountTransaction.output)).toEqual(expected);
+            expect(MessagePrinter.printMessage(testAccountTransaction.typeInput)).toEqual(expected);
         })
 
         it('6.1 Should console log a success message when a withdrawal is successful', () => {

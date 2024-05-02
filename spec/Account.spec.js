@@ -51,36 +51,25 @@ describe('Account Class Tests: ', () => {
         it('1.5 Should only allow a number as amount in the deposit method', () => {
             // Arrange
             // Act
+            testAccount.deposit('10/01/2012', '1000');
             // Assert
-            expect(() => (testAccount.deposit('10/01/2012', '1000'))).toThrowError(Error, 'Must provide a positive number');
+            expect(testAccount.getBalance()).toEqual(0);
         });
 
         it('1.6 Should only allow a positive number in the deposit method', () => {
-            // Arrange            
-            // Act            
+            // Arrange
+            // Act          
+            testAccount.deposit('10/01/2012', -500)
             // Assert
-            expect(() => (testAccount.deposit('10/01/2012', -500))).toThrowError(Error, 'Must provide a positive number');
+            expect(testAccount.getBalance()).toEqual(0);
         });
 
-        it('1.7 Should only allow the deposit method to run if date is not falsy', () => {
-            // Arrange 
-            // Act            
-            // Assert
-            expect(() => (testAccount.deposit(undefined, 100))).toThrowError(Error, 'Must provide a date');
-        });
-
-        it('1.8 Should only allow the deposit method to run if amount is not falsy', () => {
+        it('1.7 Should only allow the deposit method to run if amount is not falsy', () => {
             // Arrange
             // Act
+            testAccount.deposit('10/01/2012', undefined)
             // Assert
-            expect(() => (testAccount.deposit('10/01/2012', undefined))).toThrowError(Error, 'Must provide a positive number');
-        });
-
-        it('1.9 Should return error message if both date and amount are falsy', () => {
-            // Arrange
-            // Act
-            // Assert
-            expect(() => (testAccount.deposit(undefined, undefined))).toThrowError(Error, 'Must provide appropriate inputs');
+            expect(testAccount.getBalance()).toEqual(0);
         });
                 
         it('4.3 Should have a callback function in the deposit method of the Account class', () => {

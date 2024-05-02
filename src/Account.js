@@ -38,7 +38,9 @@ export default class Account {
     deposit(date, amount, printMessage) {
         const type = 'deposit';
         if (!amount || amount <= 0 || typeof amount !== 'number') {
-            printMessage(type);
+            if (printMessage) {   
+                printMessage(type);                                
+            }
         } else {
             const updatedBalance = this.#balance += amount;
             let result = [date, amount, updatedBalance, type];

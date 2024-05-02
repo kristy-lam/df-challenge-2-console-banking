@@ -50,5 +50,14 @@ describe('Message Printer Class Tests: ', () => {
             // Assert
             expect(MessagePrinter.printMessage(testAccountTransaction.output)).toEqual(expected);
         })
+
+        it('6.3 Should console log an unsuccessful message when a withdrawal is unsuccessful because', () => {
+            // Arrange
+            testAccountTransaction.typeInput = 'withdrawal';
+            const expected = 'Your withdrawal is unsuccessful - the amount must be a positive number e.g. 100, and cannot be larger than your balance';
+            // Act
+            // Assert
+            expect(MessagePrinter.printMessage(testAccountTransaction.typeInput)).toEqual(expected);
+        })
     })
 })

@@ -134,6 +134,15 @@ describe('Account Class Tests: ', () => {
             // Assert
             expect(testAccount.getBalance()).toEqual(expected);
         });
+
+        it('6.2 Should have a callback function in the withdrawal method of the Account class', () => {
+            // Arrange
+            const testCallback = jasmine.createSpy('Test Callback');
+            // Act            
+            testAccount.withdrawal('10/01/2012', 600, testCallback);
+            // Assert
+            expect(testCallback).toHaveBeenCalled();
+        })
     });
 
     describe('Transaction Formatter Functionality Tests: ', () => {

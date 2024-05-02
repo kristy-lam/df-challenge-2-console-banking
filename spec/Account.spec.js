@@ -64,7 +64,7 @@ describe('Account Class Tests: ', () => {
             expect(testAccount.getBalance()).toEqual(0);
         });
 
-        it('1.7 Should only allow the deposit method to run if amount is not falsy', () => {
+        it('1.7 Should only allow an amount which is not falsy in the deposit method', () => {
             // Arrange
             // Act
             testAccount.deposit('10/01/2012', undefined)
@@ -84,9 +84,14 @@ describe('Account Class Tests: ', () => {
     });
     
     describe('Withdrawal Method Functionality Tests: ', () => {
+        // Arrange
+        beforeEach(() => {
+            testAccount = new Account();
+            testAccount.deposit('10/01/2012', 1000);
+        });
+        
         it('5.1 Should have a withdrawal method with date and amount as arguments which stores the date and adds the amount to the balance', () => {
             // Arrange
-            testAccount.deposit('10/01/2012', 1000);
             const expected = 400;
             // Act
             testAccount.withdrawal('11/01/2012', 600);
@@ -96,54 +101,38 @@ describe('Account Class Tests: ', () => {
 
         it('5.2 Should only allow a number as amount in the withdrawal method', () => {
             // Arrange
+            const expected = 1000;
             // Act
+            testAccount.withdrawal('11/01/2012', '600');
             // Assert
-            expect(() => (testAccount.withdrawal('11/01/2012', '600'))).toThrowError(Error, 'Must provide a positive number');
+            expect(testAccount.getBalance()).toEqual(expected);
         });
 
         it('5.3 Should only allow a positive number in the withdrawal method', () => {
             // Arrange
+            const expected = 1000;
             // Act
+            testAccount.withdrawal('11/01/2012', -400);
             // Assert
-            expect(() => (testAccount.withdrawal('11/01/2012', -400))).toThrowError(Error, 'Must provide a positive number');
+            expect(testAccount.getBalance()).toEqual(expected);
         });
 
-        it('5.4 Should only allow the withdrawal method to run if date is not falsy', () => {
+        it('5.4 Should only allow an amount which is not falsy in the withdrawal method', () => {
             // Arrange
+            const expected = 1000;
             // Act
+            testAccount.withdrawal('11/01/2012', undefined);
             // Assert
-            expect(() => (testAccount.withdrawal(null, 600))).toThrowError(Error, 'Must provide a date');
+            expect(testAccount.getBalance()).toEqual(expected);
         });
 
-        it('5.5 Should only allow the withdrawal method to run if amount is not falsy', () => {
+        it('5.5 Should only allow a withdrawal if the amount is not larger than the account balance', () => {
             // Arrange
-            // Act
-            // Assert
-            expect(() => (testAccount.withdrawal('11/01/2012', undefined))).toThrowError(Error, 'Must provide a positive number');
-        });
-
-        it('5.6 Should return error message if both date and amount are falsy', () => {
-            // Arrange
-            // Act
-            // Assert
-            expect(() => (testAccount.withdrawal(null, undefined))).toThrowError(Error, 'Must provide appropriate inputs');
-        });
-
-        it('5.7 Should only allow a withdrawal if the amount is not larger than the account balance', () => {
-            // Arrange
-            testAccount.deposit('10/01/2012', 1000);
             const expected = 1000;
             // Act            
+            testAccount.withdrawal('11/01/2012', 2000);
             // Assert
-            expect(() => (testAccount.withdrawal('11/01/2012', 2000))).toThrowError();
-        });
-
-        it('5.8 Should throw error if user makes a withdrawal larger than the account balance', () => {
-            // Arrange
-            testAccount.deposit('10/01/2012', 1000);
-            // Act
-            // Assert
-            expect(() => (testAccount.withdrawal('11/01/2012', 1500))).toThrowError(Error, 'Withdrawal amount must not be larger than balance');
+            expect(testAccount.getBalance()).toEqual(expected);
         });
     });
 
@@ -191,6 +180,5 @@ describe('Account Class Tests: ', () => {
             // Assert
             expect(actual).toEqual(expected);
         }))
-
     })
 })

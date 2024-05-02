@@ -21,6 +21,9 @@ demoAccount.withdrawal(DateGenerator.getDefaultDate3(), 500);
 const bankStatement1 = demoAccount.getTransactions();
 console.log(bankStatement1);
 
+console.log(chalk.grey('(From now on, today\'s date is generated ' +
+    'automatically\n as clients would not have to input the ' +
+    'date of transactions)\n'));
 console.log(chalk.green('She now deposits 750.50 into her account.'));
 demoAccount.deposit(DateGenerator.generateToday(), 750.50);
 

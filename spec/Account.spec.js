@@ -82,14 +82,16 @@ describe('Account Class Tests: ', () => {
             // Assert
             expect(() => (testAccount.deposit(undefined, undefined))).toThrowError(Error, 'Must provide appropriate inputs');
         });
-
-        it('2.6 Should return date, amount, updated balance and type when the deposit method of the Account class is called', () => {
+                
+        it('4.3 Should have a callback function in the deposit method of the Account class', () => {
             // Arrange
-            const expected = '10/01/2012 || 1000.00 ||        || 1000.00\n';
-            // Act
+            const testCallback = jasmine.createSpy('Test Callback');
+            // Act            
+            testAccount.deposit('10/01/2012', 800, testCallback);
             // Assert
-            expect(testAccount.deposit('10/01/2012', 1000)).toEqual(expected);
-        });    
+            expect(testCallback).toHaveBeenCalled();
+        })
+
     });
     
     describe('Withdrawal Method Functionality Tests: ', () => {

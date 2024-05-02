@@ -53,7 +53,7 @@ export default class Account {
         }        
     }
 
-    withdrawal(date, amount) {
+    withdrawal(date, amount, printMessage) {
         if (!date && !amount) {
             throw Error('Must provide appropriate inputs');
         } else if (!date && amount) {
@@ -66,6 +66,9 @@ export default class Account {
         const updatedBalance = this.#balance -= amount;
         const type = 'withdrawal';
         let result = [date, amount, updatedBalance, type];
+        if (printMessage) {
+            printMessage(result);
+        }
         result = this.transactionFormatter(result);
         this.addTransaction(result);
         return result;

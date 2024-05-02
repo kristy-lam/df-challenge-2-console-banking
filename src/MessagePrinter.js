@@ -8,8 +8,8 @@ export default class MessagePrinter {
 
     // Behaviours
 
-    static printMessage(transaction) { 
-        const transactionType = transaction[3];
+    static printMessage(transactionMethodsOutput) { 
+        const transactionType = transactionMethodsOutput[3];
         const message = `Your ${transactionType} is successful.`;
         return message;
     }

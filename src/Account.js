@@ -35,23 +35,20 @@ export default class Account {
         return entry;
     }
 
-    deposit (date, amount, callback) {
-        if (!date && !amount) {
-            throw Error('Must provide appropriate inputs');
-        } else if (!date && amount) {
-            throw Error('Must provide a date');
-        } else if (amount <= 0 || typeof amount !== 'number') {
-            throw Error('Must provide a positive number');
-        }
-        const updatedBalance = this.#balance += amount;
+    deposit(date, amount, printMessage) {
         const type = 'deposit';
-        let result = [date, amount, updatedBalance, type];
-        if (callback) {
-            callback(result);
-        }
-        result = this.transactionFormatter(result);
-        this.addTransaction(result);
-        return result;
+        if (!amount || amount <= 0 || typeof amount !== 'number') {
+            printMessage(type);
+        } else {
+            const updatedBalance = this.#balance += amount;
+            let result = [date, amount, updatedBalance, type];
+            if (printMessage) {
+                printMessage(result);
+            }
+            result = this.transactionFormatter(result);
+            this.addTransaction(result);
+            return result;
+        }        
     }
 
     withdrawal(date, amount) {

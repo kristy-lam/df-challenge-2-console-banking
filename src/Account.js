@@ -62,4 +62,6 @@ export default class Account {
             return entry;
         }        
     }
+
+    
 };

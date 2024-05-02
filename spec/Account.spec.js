@@ -187,5 +187,21 @@ describe('Account Class Tests: ', () => {
             // Assert
             expect(actual).toEqual(expected);
         }))
+
+        it('7.4 Should organise the default transactions in the format as specified in the README file', (() => {
+            // Arrange
+            testAccount.deposit('10/01/2012', 1000);
+            testAccount.deposit('13/01/2012', 2000);
+            testAccount.withdrawal('14/01/2012', 500);            
+            const expected = 'date       || credit  || debit  || balance\n' +
+            '14/01/2012 ||         || 500.00 || 2500.00\n' +
+            '13/01/2012 || 2000.00 ||        || 3000.00\n' +
+            '10/01/2012 || 1000.00 ||        || 1000.00\n';
+            // Act
+            const actual = testAccount.getTransactions();
+            // Assert
+            expect(actual).toEqual(expected);
+        }))
+
     })
 })

@@ -16,7 +16,7 @@ export default class DateGenerator{
     static getDefaultDate2() { return DateGenerator.#defaultDate2; }
     static getDefaultDate3() { return DateGenerator.#defaultDate3; }
 
-    static getToday() {
+    static #getToday() {
         const today = new Date();
         const year = today.getFullYear();
         const month = today.getMonth() + 1;  // Because May is outputted as '4'    
@@ -25,7 +25,7 @@ export default class DateGenerator{
         return result;
     }
 
-        static dateFormatter(year, month, date) {
+    static #dateFormatter(year, month, date) {
         month = String(month).padStart(2, '0');  // Add '0' if month is only one digit        
         date = String(date).padStart(2, '0');  // Add '0' if date is only one digit        
         const formattedDate = `${date}/${month}/${year}`;        
@@ -33,8 +33,8 @@ export default class DateGenerator{
     }
 
     static generateToday() {
-        const todayArr = DateGenerator.getToday();
-        const formattedDate = DateGenerator.dateFormatter(...todayArr);
+        const todayArr = DateGenerator.#getToday();
+        const formattedDate = DateGenerator.#dateFormatter(...todayArr);
         return formattedDate;
     }
 }

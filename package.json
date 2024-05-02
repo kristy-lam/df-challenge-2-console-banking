@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "jasmine",
-    "start": "npm src/index.js"
+    "start": "node ./src/index.js"
   },
   "author": "Kristy Lam",
   "license": "ISC",

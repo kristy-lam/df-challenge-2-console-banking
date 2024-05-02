@@ -31,7 +31,7 @@ describe('Account Class Tests: ', () => {
 
         it('1.3 Should have a transactions property in an account initialized as an object', () => {
             // Arrange            
-            const expected = {};
+            const expected = '';
             // Act
             // Assert
             expect(testAccount.getTransactions()).toEqual(expected);
@@ -81,14 +81,6 @@ describe('Account Class Tests: ', () => {
             // Act
             // Assert
             expect(() => (testAccount.deposit(undefined, undefined))).toThrowError(Error, 'Must provide appropriate inputs');
-        });
-
-        it('2.6 Should return an array of date, amount, updated balance and type when the deposit method of the Account class is called', () => {
-            // Arrange
-            const expected = ['10/01/2012', 1000, 1000, 'deposit'];
-            // Act
-            // Assert
-            expect(testAccount.deposit('10/01/2012', 1000)).toEqual(expected);
         });
 
         it('2.6 Should return an array of date, amount, updated balance and type when the deposit method of the Account class is called', () => {
@@ -163,4 +155,15 @@ describe('Account Class Tests: ', () => {
             expect(() => (testAccount.withdrawal('11/01/2012', 1500))).toThrowError(Error, 'Withdrawal amount must not be larger than balance');
         });
     });
-});
+
+    describe('Transaction Formatter Functionality Tests: ', () => {
+        it('7.1 Should have a title row for the transactions in the default terminal display as specified in the README file', (() => {
+            // Arrange
+            const expected = 'date       || credit  || debit  || balance\n';
+            // Act
+            const actual = testAccount.getTransactionTitleRow();
+            // Assert
+            expect(actual).toEqual(expected);
+        }))
+    })
+})

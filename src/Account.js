@@ -1,7 +1,7 @@
 export default class Account { 
     // Properties
     #balance;
-    #transactions = {};
+    #transactions = '';
 
     constructor(balance = 0) {
         this.#balance = balance;
@@ -23,8 +23,6 @@ export default class Account {
         const updatedBalance = this.#balance += amount;
         const type = 'deposit';
         const result = [date, amount, updatedBalance, type];
-        // MessagePrinter.printSuccessMessage(type);
-        // return new Transaction(...result);
         return result;
     }
 
@@ -41,11 +39,6 @@ export default class Account {
         const updatedBalance = this.#balance -= amount;
         const type = 'withdrawal';
         const result = [date, amount, updatedBalance, type];
-        // MessagePrinter.printSuccessMessage(type);
-        // return new Transaction(...result);
         return result;
     }
-
-
-
 };

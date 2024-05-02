@@ -54,24 +54,20 @@ export default class Account {
     }
 
     withdrawal(date, amount, printMessage) {
-        if (!date && !amount) {
-            throw Error('Must provide appropriate inputs');
-        } else if (!date && amount) {
-            throw Error('Must provide a date');
-        } else if (amount <= 0 || typeof amount !== 'number') {
-            throw Error('Must provide a positive number');
-        } else if (amount > this.getBalance()) {
-            throw Error('Withdrawal amount must not be larger than balance');
-        }
-        const updatedBalance = this.#balance -= amount;
         const type = 'withdrawal';
-        let result = [date, amount, updatedBalance, type];
-        if (printMessage) {
-            printMessage(result);
+        if (amount > this.getBalance() || amount <= 0 || !amount || typeof amount !== 'number') {
+            if (printMessage) {
+                printMessage(type);
+            }
+        } else {
+            const updatedBalance = this.#balance -= amount;
+            let result = [date, amount, updatedBalance, type];
+            if (printMessage) {
+                printMessage(result);
+            }
+            result = this.transactionFormatter(result);
+            this.addTransaction(result);
+            return result;
         }
-        result = this.transactionFormatter(result);
-        this.addTransaction(result);
-        return result;
     }
-
-};
+}

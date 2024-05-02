@@ -35,7 +35,7 @@ export default class Account {
         return entry;
     }
 
-    deposit (date, amount) {
+    deposit (date, amount, callback) {
         if (!date && !amount) {
             throw Error('Must provide appropriate inputs');
         } else if (!date && amount) {
@@ -46,6 +46,9 @@ export default class Account {
         const updatedBalance = this.#balance += amount;
         const type = 'deposit';
         let result = [date, amount, updatedBalance, type];
+        if (callback) {
+            callback(result);
+        }
         result = this.transactionFormatter(result);
         this.addTransaction(result);
         return result;

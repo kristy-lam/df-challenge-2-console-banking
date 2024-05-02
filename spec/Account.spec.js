@@ -168,10 +168,22 @@ describe('Account Class Tests: ', () => {
 
         it('7.2 Should have information of the default deposits ready in the format as specified in the README file', (() => {
             // Arrange
-            const defaultTransaction = testAccount.deposit('10/01/2012', 1000)
+            const defaultDeposit = testAccount.deposit('10/01/2012', 1000);
             const expected = '10/01/2012 || 1000.00 ||        || 1000.00\n';            
             // Act
-            const actual = testAccount.transactionFormatter(defaultTransaction);
+            const actual = testAccount.transactionFormatter(defaultDeposit);
+            // Assert
+            expect(actual).toEqual(expected);
+        }))
+
+        it('7.3 Should have information of the default withdrawal ready in the format as specified in the README file', (() => {
+            // Arrange
+            testAccount.deposit('10/01/2012', 1000);
+            testAccount.deposit('13/01/2012', 2000);
+            const defaultWithdrawal = testAccount.withdrawal('14/01/2012', 500);
+            const expected = '14/01/2012 ||         || 500.00 || 2500.00\n';            
+            // Act
+            const actual = testAccount.transactionFormatter(defaultWithdrawal);
             // Assert
             expect(actual).toEqual(expected);
         }))

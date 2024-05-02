@@ -15,11 +15,11 @@ export default class MessagePrinter {
             } else {
                 message = `Your withdrawal is unsuccessful - the amount must be a positive number e.g. 100, and cannot be larger than your balance`;
             }
-            return message;
         } else {      
             const transactionType = transactionMethodsOutput[3];
             message = `Your ${transactionType} is successful.`;
         }
-        return message;        
+        console.log(message);
+        return message;  // For testing purpose
     }
 }

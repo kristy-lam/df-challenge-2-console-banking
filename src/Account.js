@@ -11,7 +11,10 @@ export default class Account {
     // Behaviours
     getBalance() { return this.#balance; }
 
-    getTransactions() { return this.#transactions; }
+    getTransactions() {
+        console.log(this.#transactions);
+        return this.#transactions;  // For testing purpose
+    }
 
     addTransaction(newTransaction) {
         const allTransactions = this.#transactions.slice(0, this.#titleRowIndex) +

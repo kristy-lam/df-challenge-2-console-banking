@@ -18,29 +18,33 @@ const demoAccount = new Account();
 demoAccount.deposit(DateGenerator.getDefaultDate1(), 1000);
 demoAccount.deposit(DateGenerator.getDefaultDate2(), 2000);
 demoAccount.withdrawal(DateGenerator.getDefaultDate3(), 500);
-const bankStatement1 = demoAccount.getTransactions();
-console.log(bankStatement1);
+demoAccount.getTransactions();
 
 console.log(chalk.grey('(From now on, today\'s date is generated ' +
     'automatically\n as clients would not have to input the ' +
     'date of transactions)\n'));
 console.log(chalk.green('She now deposits 750.50 into her account.'));
-demoAccount.deposit(DateGenerator.generateToday(), 750.50);
+console.log(chalk.magenta('Message from terminal to client:'));
+demoAccount.deposit(DateGenerator.generateToday(), 750.50, MessagePrinter.printMessage);
 
 console.log(chalk.green('She now prints a bank statement.'));
-const bankStatement2 = demoAccount.getTransactions();
-console.log(bankStatement2);
+demoAccount.getTransactions();
 
 console.log(chalk.green('She now withdraws 85.50 from her account.'));
-demoAccount.withdrawal(DateGenerator.generateToday(), 85.50);
+console.log(chalk.magenta('Message from terminal to client:'));
+demoAccount.withdrawal(DateGenerator.generateToday(), 85.50, MessagePrinter.printMessage);
 
-const bankStatement3 = demoAccount.getTransactions();
-console.log(bankStatement3);
+console.log(chalk.green('She now prints a bank statement.'));
+demoAccount.getTransactions();
 
 console.log(chalk.green('She now tries to withdraw 3200 from her account, ' +
     'which is more than the current balance.'));
-demoAccount.withdrawal(DateGenerator.generateToday(), 3200);
+console.log(chalk.magenta('Message from terminal to client:'));
+demoAccount.withdrawal(DateGenerator.generateToday(), 3200, MessagePrinter.printMessage);
 
-const bankStatement4 = demoAccount.getTransactions();
-console.log(bankStatement4);
+console.log(chalk.green('She now prints a bank statement (which remains the same as her previous withdrawal was unsuccessful).'));
+demoAccount.getTransactions();
 
+console.log(chalk.blue('======================================='));
+console.log(chalk.blue('END OF CODE'));
+console.log(chalk.blue('======================================='));

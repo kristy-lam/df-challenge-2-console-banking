@@ -17,9 +17,7 @@ describe('Message Printer Class Tests: ', () => {
         
         beforeEach(() => {
             testAccountTransaction = jasmine.createSpyObj("Test Account Transaction", {
-            date: undefined,
-            amount: undefined,
-            type: undefined,
+                output: undefined,
             })            
         })
 
@@ -27,20 +25,20 @@ describe('Message Printer Class Tests: ', () => {
 
         it('4.2 Should print a success message when a deposit is successful', () => {
             // Arrange
-            testAccountTransaction.type = 'deposit';
+            testAccountTransaction.output = ['10/01/2012', 1000, 2000, 'deposit'];
             const expected = 'Your deposit is successful.';
             // Act
             // Assert
-            expect(MessagePrinter.printSuccessMessage(testAccountTransaction.type)).toEqual(expected);
+            expect(MessagePrinter.printMessage(testAccountTransaction.output)).toEqual(expected);
         })
 
         it('6.1 Should console log a success message when a withdrawal is successful', () => {
             // Arrange
-            testAccountTransaction.type = 'withdrawal';
+            testAccountTransaction.output = ['10/01/2012', 1000, 1000, 'withdrawal'];
             const expected = 'Your withdrawal is successful.';
             // Act
             // Assert
-            expect(MessagePrinter.printSuccessMessage(testAccountTransaction.type)).toEqual(expected);
+            expect(MessagePrinter.printMessage(testAccountTransaction.output)).toEqual(expected);
         })
     })
 })

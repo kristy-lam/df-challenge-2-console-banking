@@ -29,9 +29,9 @@ describe('Account Class Tests: ', () => {
             expect(testAccount.getBalance()).toEqual(expected);
         });
 
-        it('1.3 Should have a transactions property in an account initialized as an object', () => {
-            // Arrange            
-            const expected = '';
+        it('1.3 Should have a transactions property in an account initialized as a string with a title row', () => {
+            // Arrange
+            const expected = 'date       || credit  || debit  || balance\n';
             // Act
             // Assert
             expect(testAccount.getTransactions()).toEqual(expected);
@@ -83,9 +83,9 @@ describe('Account Class Tests: ', () => {
             expect(() => (testAccount.deposit(undefined, undefined))).toThrowError(Error, 'Must provide appropriate inputs');
         });
 
-        it('2.6 Should return an array of date, amount, updated balance and type when the deposit method of the Account class is called', () => {
+        it('2.6 Should return date, amount, updated balance and type when the deposit method of the Account class is called', () => {
             // Arrange
-            const expected = ['10/01/2012', 1000, 1000, 'deposit'];
+            const expected = '10/01/2012 || 1000.00 ||        || 1000.00\n';
             // Act
             // Assert
             expect(testAccount.deposit('10/01/2012', 1000)).toEqual(expected);
@@ -161,31 +161,29 @@ describe('Account Class Tests: ', () => {
             // Arrange
             const expected = 'date       || credit  || debit  || balance\n';
             // Act
-            const actual = testAccount.getTransactionTitleRow();
+            const actual = testAccount.getTransactions();
             // Assert
             expect(actual).toEqual(expected);
         }))
 
         it('7.2 Should have information of the default deposits ready in the format as specified in the README file', (() => {
-            // Arrange
-            const defaultDeposit = testAccount.deposit('10/01/2012', 1000);
+            // Arrange            
             const expected = '10/01/2012 || 1000.00 ||        || 1000.00\n';            
             // Act
-            const actual = testAccount.transactionFormatter(defaultDeposit);
+            testAccount.deposit('10/01/2012', 1000);
             // Assert
-            expect(actual).toEqual(expected);
+            expect(testAccount.getTransactions()).toContain(expected);
         }))
 
         it('7.3 Should have information of the default withdrawal ready in the format as specified in the README file', (() => {
             // Arrange
             testAccount.deposit('10/01/2012', 1000);
             testAccount.deposit('13/01/2012', 2000);
-            const defaultWithdrawal = testAccount.withdrawal('14/01/2012', 500);
             const expected = '14/01/2012 ||         || 500.00 || 2500.00\n';            
             // Act
-            const actual = testAccount.transactionFormatter(defaultWithdrawal);
+            testAccount.withdrawal('14/01/2012', 500);
             // Assert
-            expect(actual).toEqual(expected);
+            expect(testAccount.getTransactions()).toContain(expected);
         }))
 
         it('7.4 Should organise the default transactions in the format as specified in the README file', (() => {

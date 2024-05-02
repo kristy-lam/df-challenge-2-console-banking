@@ -1,8 +1,8 @@
 export default class Account { 
     // Properties
-    #balance;
-    #transactionTitleRow = 'date       || credit  || debit  || balance\n';   
-    #transactions = '';
+    #balance; 
+    #transactions = 'date       || credit  || debit  || balance\n';
+    #titleRowIndex = 'date       || credit  || debit  || balance\n'.length;
 
     constructor(balance = 0) {
         this.#balance = balance;
@@ -11,38 +11,12 @@ export default class Account {
     // Behaviours
     getBalance() { return this.#balance; }
 
-    getTransactionTitleRow() { return this.#transactionTitleRow; }
-
     getTransactions() { return this.#transactions; }
 
-    deposit (date, amount) {
-        if (!date && !amount) {
-            throw Error('Must provide appropriate inputs');
-        } else if (!date && amount) {
-            throw Error('Must provide a date');
-        } else if (amount <= 0 || typeof amount !== 'number') {
-            throw Error('Must provide a positive number');
-        }
-        const updatedBalance = this.#balance += amount;
-        const type = 'deposit';
-        const result = [date, amount, updatedBalance, type];
-        return result;
-    }
-
-    withdrawal(date, amount) {
-        if (!date && !amount) {
-            throw Error('Must provide appropriate inputs');
-        } else if (!date && amount) {
-            throw Error('Must provide a date');
-        } else if (amount <= 0 || typeof amount !== 'number') {
-            throw Error('Must provide a positive number');
-        } else if (amount > this.getBalance()) {
-            throw Error('Withdrawal amount must not be larger than balance');
-        }
-        const updatedBalance = this.#balance -= amount;
-        const type = 'withdrawal';
-        const result = [date, amount, updatedBalance, type];
-        return result;
+    addTransaction(newTransaction) {
+        const allTransactions = this.#transactions.slice(0, this.#titleRowIndex) +
+            newTransaction + this.#transactions.slice(this.#titleRowIndex);
+        this.#transactions = allTransactions;
     }
 
     transactionFormatter(transaction) {
@@ -63,5 +37,38 @@ export default class Account {
         }        
     }
 
-    
+    deposit (date, amount) {
+        if (!date && !amount) {
+            throw Error('Must provide appropriate inputs');
+        } else if (!date && amount) {
+            throw Error('Must provide a date');
+        } else if (amount <= 0 || typeof amount !== 'number') {
+            throw Error('Must provide a positive number');
+        }
+        const updatedBalance = this.#balance += amount;
+        const type = 'deposit';
+        let result = [date, amount, updatedBalance, type];
+        result = this.transactionFormatter(result);
+        this.addTransaction(result);
+        return result;
+    }
+
+    withdrawal(date, amount) {
+        if (!date && !amount) {
+            throw Error('Must provide appropriate inputs');
+        } else if (!date && amount) {
+            throw Error('Must provide a date');
+        } else if (amount <= 0 || typeof amount !== 'number') {
+            throw Error('Must provide a positive number');
+        } else if (amount > this.getBalance()) {
+            throw Error('Withdrawal amount must not be larger than balance');
+        }
+        const updatedBalance = this.#balance -= amount;
+        const type = 'withdrawal';
+        let result = [date, amount, updatedBalance, type];
+        result = this.transactionFormatter(result);
+        this.addTransaction(result);
+        return result;
+    }
+
 };

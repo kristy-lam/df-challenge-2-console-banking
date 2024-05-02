@@ -1,15 +1,15 @@
-import Transaction from "../src/Transaction.js";
+// import Transaction from "../src/Transaction.js";
 
-describe('Transaction Class Tests: ', () => {
-    let testTransaction;
+// describe('Transaction Class Tests: ', () => {
+//     let testTransaction;
     
-    beforeEach(() => {
-        testTransaction = new Transaction();
-    });
+//     beforeEach(() => {
+//         testTransaction = new Transaction();
+//     });
 
-    afterEach(() => {
-        testTransaction = undefined;
-    });
+//     afterEach(() => {
+//         testTransaction = undefined;
+//     });
 
     // describe('Transaction Initialisation Tests: ', () => {
     //     it('2.1 Should be an instance of the Transaction class', () => {
@@ -84,15 +84,15 @@ describe('Transaction Class Tests: ', () => {
     //     });
     // });
 
-    describe('Transaction Formatter Functionality Tests: ', () => {
-        it('7.1 Should have a title row for the transactions in the default terminal display as specified in the README file', (() => {
-            // Arrange
-            const expected = 'date       || credit  || debit  || balance\n';
-            // Act
-            const actual = testTransaction.getTransactionTitleRow();
-            // Assert
-            expect(actual).toEqual(expected);
-        }))
+    // describe('Transaction Formatter Functionality Tests: ', () => {
+    //     it('7.1 Should have a title row for the transactions in the default terminal display as specified in the README file', (() => {
+    //         // Arrange
+    //         const expected = 'date       || credit  || debit  || balance\n';
+    //         // Act
+    //         const actual = testTransaction.getTransactionTitleRow();
+    //         // Assert
+    //         expect(actual).toEqual(expected);
+    //     }))
 
         // it('7.2 Should have information of the default deposits ready in the format as specified in the README file', (() => {
         //     // Arrange
@@ -138,5 +138,5 @@ describe('Transaction Class Tests: ', () => {
         //     // Assert
         //     expect(actual).toEqual(expected);
         // }))
-    })
-});
+//     })
+// });

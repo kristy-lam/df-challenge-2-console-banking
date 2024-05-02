@@ -1,6 +1,7 @@
 export default class Account { 
     // Properties
     #balance;
+    #transactionTitleRow = 'date       || credit  || debit  || balance\n';   
     #transactions = '';
 
     constructor(balance = 0) {
@@ -9,6 +10,8 @@ export default class Account {
 
     // Behaviours
     getBalance() { return this.#balance; }
+
+    getTransactionTitleRow() { return this.#transactionTitleRow; }
 
     getTransactions() { return this.#transactions; }
 

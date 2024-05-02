@@ -165,5 +165,15 @@ describe('Account Class Tests: ', () => {
             // Assert
             expect(actual).toEqual(expected);
         }))
+
+        it('7.2 Should have information of the default deposits ready in the format as specified in the README file', (() => {
+            // Arrange
+            const defaultTransaction = testAccount.deposit('10/01/2012', 1000)
+            const expected = '10/01/2012 || 1000.00 ||        || 1000.00\n';            
+            // Act
+            const actual = testAccount.transactionFormatter(defaultTransaction);
+            // Assert
+            expect(actual).toEqual(expected);
+        }))
     })
 })

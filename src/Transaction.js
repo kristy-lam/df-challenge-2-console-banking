@@ -4,7 +4,7 @@ export default class Transaction {
     #amount;
     #updatedBalance;
     #type;    
-    #transactionTitleRow = 'date       || credit  || debit  || balance\n';
+
 
     // Constructor
     constructor(date, amount = 0, updatedBalance = 0, type = null) {
@@ -25,8 +25,6 @@ export default class Transaction {
     getUpdatedBalance = () => { return this.#updatedBalance };
 
     getType = () => { return this.#type }
-
-    getTransactionTitleRow() { return this.#transactionTitleRow; }
 
     transactionFormatter(transaction) {
         if (transaction[3] === 'deposit') {

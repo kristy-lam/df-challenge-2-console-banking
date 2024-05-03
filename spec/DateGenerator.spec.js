@@ -49,7 +49,7 @@ describe('Date Generator Class Test: ', () => {
             // Arrange
             const expected = 'The date inputted is invalid, please try again.';
             // Act
-            const actual = DateGenerator.generateCustomDate(35, 'Jun', 2024);
+            const actual = DateGenerator.generateCustomDate(39, 'Jan', 2024);
             // Assert
             expect(actual).toEqual(expected);
         })

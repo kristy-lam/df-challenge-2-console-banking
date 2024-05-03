@@ -15,9 +15,9 @@ console.log(chalk.green('Display on terminal on load:\n' +
     'she would see -\n'))
 
 const demoAccount = new Account();
-demoAccount.deposit(DateGenerator.getDefaultDate1(), 1000);
-demoAccount.deposit(DateGenerator.getDefaultDate2(), 2000);
-demoAccount.withdrawal(DateGenerator.getDefaultDate3(), 500);
+// demoAccount.deposit(DateGenerator.getDefaultDate1(), 1000);
+// demoAccount.deposit(DateGenerator.getDefaultDate2(), 2000);
+// demoAccount.withdrawal(DateGenerator.getDefaultDate3(), 500);
 demoAccount.getTransactions();
 
 console.log(chalk.grey('(From now on, today\'s date is generated ' +
@@ -29,7 +29,7 @@ console.log(chalk.blue('DEMO CASE 1'));
 console.log(chalk.green('She now deposits 750.50 into her account.'));
 console.log(chalk.magenta('Message from terminal to client:'));
 demoAccount.deposit(DateGenerator.generateToday(),
-    750.123456, MessagePrinter.printMessage);
+    750.50, MessagePrinter.printMessage);
 
 console.log(chalk.green('She now prints a bank statement.'));
 demoAccount.getTransactions();

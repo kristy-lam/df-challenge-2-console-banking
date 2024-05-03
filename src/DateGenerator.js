@@ -36,47 +36,78 @@ export default class DateGenerator{
         return formattedDate;
     }
 
-    static generateCustomDate(date, month, year) {
-        switch (month) {
-            case 'Jan':
-                month = 1;
-                break;
-            case 'Feb':
-                month = 2;
-                break;
-            case 'Mar':
-                month = 3;
-                break;
-            case 'Apr':
-                month = 4;
-                break;
-            case 'May':
-                month = 5;
-                break;
-            case 'Jun':
-                month = 6;
-                break;
-            case 'Jul':
-                month = 7;
-                break;
-            case 'Aug':
-                month = 8;
-                break;
-            case 'Sep':
-                month = 9;
-                break; 
-            case 'Oct':
-                month = 10;
-                break;
-            case 'Nov':
-                month = 11;
-                break;
-            case 'Dec':
-                month = 12;
-                break;
+    static #validateYear(year) {
+        if (!isNaN(year)) {
+            year = parseInt(year);
+            // Check if year has 4 digits, and not starting with 0
+            const regex = /^[1-9]\d{3}$/;
+            return regex.test(year) ? year : false;
+        } return false;
+    }
+
+    static #validateMonth(month) {
+        const months = {
+            'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,
+            'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12
+        };
+        return months[month] || false;
+    }
+
+    static #validateDate(year, month, date) {        
+        if (!isNaN(date)) {
+            date = parseInt(date, 10);
+            const leapYearCondition = year % 4 === 0 && (year % 100 !== 0 ||
+                year % 400 === 0);
+            const daysInMonth = {
+                1: 31, 2: ((leapYearCondition) ? 29 : 28), 3: 31, 4: 30, 5: 31,
+                6: 30, 7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31
+            };
+            if (date < 1 || date > daysInMonth[month]) {
+                return false;
+            }
+            return date;
+        } return false;
+    }
+
+    static #validateInput(dateInput) {      
+        let year = dateInput[0];
+        let month = dateInput[1];
+        let date = dateInput[2];
+
+        if (!DateGenerator.#validateYear(year)) {
+            const message = 'The year inputted is invalid, please try again.';
+            console.log(message);
+            return message;
         }
-        const dateArr = [year, month, date];
-        const formattedDate = DateGenerator.#dateFormatter(...dateArr);
+        year = DateGenerator.#validateYear(year);
+
+        if (!DateGenerator.#validateMonth(month)) {
+            const message = 'The month inputted is invalid. The correct ' +
+                'input \nshould be the short form of the name of the month ' +
+                '\nin three characters, e.g. "Sep" for September.';
+            console.log(message);
+            return message;
+        }
+        month = DateGenerator.#validateMonth(month);
+
+        if (!DateGenerator.#validateDate(year, month, date)) {
+            const message = 'The date inputted is invalid, ' +
+                'please try again.';
+            console.log(message);
+            return message;
+        }
+        date = DateGenerator.#validateDate(year, month, date);
+        return [year, month, date];
+    }
+
+    static generateCustomDate(date, month, year) {        
+        const dateInput = [year, month, date];
+        const validationResult = DateGenerator.#validateInput(dateInput);
+        if (typeof validationResult === 'string') {
+            // If validation fails, return the error message
+            return validationResult;
+        }
+        const formattedDate = DateGenerator.#dateFormatter(...validationResult);
         return formattedDate;
     }
 }

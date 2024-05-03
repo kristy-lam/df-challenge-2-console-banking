@@ -34,11 +34,22 @@ describe('Date Generator Class Test: ', () => {
     })
 
     describe('Generate Custom Date Functionality Tests: ', () => {
-        it('2.3 Should be able to generate a custom date with the generateCustomDate method', () => {
+        it('2.3 Should be able to generate a custom date with the ' +
+            'generateCustomDate method', () => {
             // Arrange
             const expected = '05/06/2024';
             // Act
             const actual = DateGenerator.generateCustomDate(5, 'Jun', 2024);
+            // Assert
+            expect(actual).toEqual(expected);
+        })
+
+        it('2.4 Should validate that only a valid date can be used in the ' +
+            'generateCustomDate method - invalid date', () => {            
+            // Arrange
+            const expected = 'The date inputted is invalid, please try again.';
+            // Act
+            const actual = DateGenerator.generateCustomDate(35, 'Jun', 2024);
             // Assert
             expect(actual).toEqual(expected);
         })

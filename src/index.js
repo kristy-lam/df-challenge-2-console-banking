@@ -29,7 +29,7 @@ console.log(chalk.blue('DEMO CASE 1'));
 console.log(chalk.green('She now deposits 750.50 into her account.'));
 console.log(chalk.magenta('Message from terminal to client:'));
 demoAccount.deposit(DateGenerator.generateToday(),
-    750.50, MessagePrinter.printMessage);
+    750.123456, MessagePrinter.printMessage);
 
 console.log(chalk.green('She now prints a bank statement.'));
 demoAccount.getTransactions();

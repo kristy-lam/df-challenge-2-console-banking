@@ -9,14 +9,14 @@ export default class Account {
     }
 
     // Behaviours
-    getBalance() { return this.#balance; }
+    getBalance() { return this.#balance; }  // For testing purpose only
 
     getTransactions() {
         console.log(this.#transactions);
         return this.#transactions;  // For testing purpose only
     }
 
-    addTransaction(newTransaction) {
+    #addTransaction(newTransaction) {
         // Add new transaction after title row and 
         // before old transactions, if any
         const allTransactions = this.#transactions.slice(
@@ -25,7 +25,7 @@ export default class Account {
         this.#transactions = allTransactions;
     }
 
-    transactionFormatter(transaction) {
+    #transactionFormatter(transaction) {
         let credit;
         let debit;
 
@@ -64,8 +64,8 @@ export default class Account {
             if (printMessage) {
                 printMessage(result);
             }
-            result = this.transactionFormatter(result);
-            this.addTransaction(result);
+            result = this.#transactionFormatter(result);
+            this.#addTransaction(result);
             return result;  // For testing purpose only
         }        
     }
@@ -88,8 +88,8 @@ export default class Account {
             if (printMessage) {
                 printMessage(result);
             }
-            result = this.transactionFormatter(result);
-            this.addTransaction(result);
+            result = this.#transactionFormatter(result);
+            this.#addTransaction(result);
             return result;    // For testing purpose only
         }
     }

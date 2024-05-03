@@ -9,9 +9,7 @@ export default class MessagePrinter {
 
     // Behaviour
 
-    // Private as it would only be used in the deposit or withdrawal 
-    // methods of the Account class as a callback function
-    static #printMessage(transactionMethodsOutput) { 
+    static printMessage(transactionMethodsOutput) { 
         let message;
 
         // Action for unsuccessful cases

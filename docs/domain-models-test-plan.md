@@ -25,11 +25,11 @@ Please see below the user stories listed in bullet points, the domain models cre
 
 ![Domain Model for User Story 2](image-dm2.png)
 
-| No. | Test                                                                   |
-| --- | ---------------------------------------------------------------------- |
-| 2.1 | Should have an abstract Date Generator class                           |
-| 2.2 | Should be able to generate today's date using the generateDate method  |
-| 2.3 | Should be able to get default dates for initialisation of the terminal |
+| No. | Test                                                                    |
+| --- | ----------------------------------------------------------------------- |
+| 2.1 | Should have an abstract Date Generator class                            |
+| 2.2 | Should be able to generate today's date using the generateToday method  |
+| 2.3 | Should be able to get default dates for initialisation of the terminal  |
 
 
 **3. As an account holder, I want to know whether a deposit is successful, so that I know whether my money has been sent into in my account.**

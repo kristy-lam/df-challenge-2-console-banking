@@ -38,7 +38,7 @@ describe('Date Generator Class Test: ', () => {
             // Arrange
             const expected = '05/06/2024';
             // Act
-            const actual = DateGenerator.generateCustomDate([5, Jun, 2024]);
+            const actual = DateGenerator.generateCustomDate(5, 'Jun', 2024);
             // Assert
             expect(actual).toEqual(expected);
         })

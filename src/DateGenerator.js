@@ -1,9 +1,4 @@
 export default class DateGenerator{
-    // Properties
-    static #defaultDate1 = '10/01/2012';
-    static #defaultDate2 = '13/01/2012';
-    static #defaultDate3 = '14/01/2012';
-
     // Make class abstract
     constructor() {
         if (new.target === DateGenerator) {
@@ -13,9 +8,6 @@ export default class DateGenerator{
     }
 
     // Behaviours
-    static getDefaultDate1() { return DateGenerator.#defaultDate1; }
-    static getDefaultDate2() { return DateGenerator.#defaultDate2; }
-    static getDefaultDate3() { return DateGenerator.#defaultDate3; }
 
     // Private as it would only be used in generateToday method
     static #getToday() {  
@@ -41,6 +33,50 @@ export default class DateGenerator{
     static generateToday() {
         const todayArr = DateGenerator.#getToday();
         const formattedDate = DateGenerator.#dateFormatter(...todayArr);
+        return formattedDate;
+    }
+
+    static generateCustomDate(date, month, year) {
+        switch (month) {
+            case 'Jan':
+                month = 1;
+                break;
+            case 'Feb':
+                month = 2;
+                break;
+            case 'Mar':
+                month = 3;
+                break;
+            case 'Apr':
+                month = 4;
+                break;
+            case 'May':
+                month = 5;
+                break;
+            case 'Jun':
+                month = 6;
+                break;
+            case 'Jul':
+                month = 7;
+                break;
+            case 'Aug':
+                month = 8;
+                break;
+            case 'Sep':
+                month = 9;
+                break; 
+            case 'Oct':
+                month = 10;
+                break;
+            case 'Nov':
+                month = 11;
+                break;
+            case 'Dec':
+                month = 12;
+                break;
+        }
+        const dateArr = [year, month, date];
+        const formattedDate = DateGenerator.#dateFormatter(...dateArr);
         return formattedDate;
     }
 }

@@ -1,8 +1,8 @@
 import MessagePrinter from "../src/MessagePrinter.js";
  
 describe('Message Printer Class Tests: ', () => {
-    describe('Message Print Class Initialisation Test: ', () => {
-        it('4.1 Should have an abstract Message Printer class', () => {
+    describe('Message Printer Class Initialisation Test: ', () => {
+        it('3.1 Should have an abstract Message Printer class', () => {
             // Arrange
             // Act
             // Assert
@@ -16,48 +16,68 @@ describe('Message Printer Class Tests: ', () => {
         let testAccountTransaction;
         
         beforeEach(() => {
-            testAccountTransaction = jasmine.createSpyObj("Test Account Transaction", {
-                typeInput: undefined,
-                output: undefined,
+            //* Imitate the output from the deposit or withdrawal method
+            //* in the Account class
+            testAccountTransaction = jasmine.createSpyObj(
+                "Test Account Transaction", {
+                    //* successfulOutput would be the array with date,
+                    //* amount, updatedBalance and type
+                    successfulOutput: undefined,
+                    //* unsuccessfulOutput would only be the type of the 
+                    //* transaction, i.e. 'deposit' or 'withdrawal'    
+                    unsuccessfulOutput: undefined,
             })            
         })
 
         afterEach(() => { testAccountTransaction = undefined })
 
-        it('4.2 Should print a success message when a deposit is successful', () => {
+        it('3.2 Should print a success message when a deposit is successful',
+            () => {
             // Arrange
-            testAccountTransaction.output = ['10/01/2012', 1000, 2000, 'deposit'];
-            const expected = 'Your deposit is successful.';
+                testAccountTransaction.successfulOutput = [
+                    '10/01/2012', 1000, 2000, 'deposit'];
+                const expected = 'Your deposit is successful.';
             // Act
             // Assert
-            expect(MessagePrinter.printMessage(testAccountTransaction.output)).toEqual(expected);
+                expect(MessagePrinter.printMessage(
+                    testAccountTransaction.successfulOutput)).toEqual(expected);
         })
 
-        it('4.4 Should console log an unsuccessful message when a deposit is unsuccessful', () => {
+        it('3.4 Should console log an unsuccessful message when a deposit is ' +
+            'unsuccessful', () => {
             // Arrange
-            testAccountTransaction.typeInput = 'deposit';
-            const expected = 'Your deposit is unsuccessful - the amount must be a positive number e.g. 100';
+            testAccountTransaction.unsuccessfulOutput = 'deposit';
+            const expected = 'Your deposit is unsuccessful - \n' +
+                'the amount must be a positive number e.g. 100';
             // Act
             // Assert
-            expect(MessagePrinter.printMessage(testAccountTransaction.typeInput)).toEqual(expected);
+            expect(MessagePrinter.printMessage(
+                testAccountTransaction.unsuccessfulOutput)).toEqual(expected);
         })
 
-        it('6.1 Should console log a success message when a withdrawal is successful', () => {
+        it('5.1 Should console log a success message when a withdrawal is ' +
+            'successful', () => {
             // Arrange
-            testAccountTransaction.output = ['10/01/2012', 1000, 1000, 'withdrawal'];
+            testAccountTransaction.successfulOutput = [
+                '10/01/2012', 1000, 1000, 'withdrawal'];
             const expected = 'Your withdrawal is successful.';
             // Act
             // Assert
-            expect(MessagePrinter.printMessage(testAccountTransaction.output)).toEqual(expected);
+            expect(MessagePrinter.printMessage(
+                testAccountTransaction.successfulOutput)).toEqual(expected);
         })
 
-        it('6.3 Should console log an unsuccessful message when a withdrawal is unsuccessful', () => {
+        it('5.3 Should console log an unsuccessful message when a withdrawal ' +
+            'is unsuccessful', () => {
             // Arrange
-            testAccountTransaction.typeInput = 'withdrawal';
-            const expected = 'Your withdrawal is unsuccessful - the amount must be a positive number e.g. 100, and cannot be larger than your balance';
+            testAccountTransaction.unsuccessfulOutput = 'withdrawal';
+            const expected = 'Your withdrawal is unsuccessful - \n' +
+                'the amount must be a positive number e.g. 100, \n' +
+                'and cannot be larger than your balance';
             // Act
             // Assert
-            expect(MessagePrinter.printMessage(testAccountTransaction.typeInput)).toEqual(expected);
+            expect(MessagePrinter.printMessage(
+                testAccountTransaction.unsuccessfulOutput)).toEqual(expected);
         })
     })
 })

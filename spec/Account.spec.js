@@ -21,7 +21,8 @@ describe('Account Class Tests: ', () => {
             expect(testAccount).toBeInstanceOf(Account);
         });
             
-        it('1.2 Should have a balance property in an account initialized to 0', () => {
+        it('1.2 Should have a balance property in an account initialized ' +
+            'to 0', () => {
             // Arrange            
             const expected = 0;
             // Act
@@ -29,7 +30,8 @@ describe('Account Class Tests: ', () => {
             expect(testAccount.getBalance()).toEqual(expected);
         });
 
-        it('1.3 Should have a transactions property in an account initialized as a string with a title row', () => {
+        it('1.3 Should have a transactions property in an account ' +
+            'initialized as a string with a title row', () => {
             // Arrange
             const expected = 'date       || credit  || debit  || balance\n';
             // Act
@@ -39,7 +41,9 @@ describe('Account Class Tests: ', () => {
     });  
 
     describe('Deposit Method Functionality Tests: ', () => {
-        it('1.4 Should have a deposit method with date and amount as arguments which stores the date and adds the amount to the balance', () => {
+        it('1.4 Should have a deposit method with date and amount as ' +
+            'arguments which stores the date and adds the amount to the ' +
+            'balance', () => {
             // Arrange            
             const expected = 1000;
             // Act
@@ -48,7 +52,8 @@ describe('Account Class Tests: ', () => {
             expect(testAccount.getBalance()).toEqual(expected);
         });
 
-        it('1.5 Should only allow a number as amount in the deposit method', () => {
+        it('1.5 Should only allow a number as amount in the deposit ' +
+            'method', () => {
             // Arrange
             // Act
             testAccount.deposit('10/01/2012', '1000');
@@ -56,7 +61,8 @@ describe('Account Class Tests: ', () => {
             expect(testAccount.getBalance()).toEqual(0);
         });
 
-        it('1.6 Should only allow a positive number in the deposit method', () => {
+        it('1.6 Should only allow a positive number in the deposit method',
+            () => {
             // Arrange
             // Act          
             testAccount.deposit('10/01/2012', -500)
@@ -64,7 +70,8 @@ describe('Account Class Tests: ', () => {
             expect(testAccount.getBalance()).toEqual(0);
         });
 
-        it('1.7 Should only allow an amount which is not falsy in the deposit method', () => {
+        it('1.7 Should only allow an amount which is not falsy in the ' +
+            'deposit method', () => {
             // Arrange
             // Act
             testAccount.deposit('10/01/2012', undefined)
@@ -72,10 +79,13 @@ describe('Account Class Tests: ', () => {
             expect(testAccount.getBalance()).toEqual(0);
         });
                 
-        it('4.3 Should have a callback function in the deposit method of the Account class', () => {
+        it('3.3 Should have a callback function in the deposit method of ' +
+            'the Account class', () => {
             // Arrange
             const testCallback = jasmine.createSpy('Test Callback');
-            // Act            
+            // Act
+            //* Callback function would be MessagePrinter.printMessage() 
+            //* in production code
             testAccount.deposit('10/01/2012', 800, testCallback);
             // Assert
             expect(testCallback).toHaveBeenCalled();
@@ -90,7 +100,9 @@ describe('Account Class Tests: ', () => {
             testAccount.deposit('10/01/2012', 1000);
         });
         
-        it('5.1 Should have a withdrawal method with date and amount as arguments which stores the date and adds the amount to the balance', () => {
+        it('4.1 Should have a withdrawal method with date and amount as ' +
+            'arguments which stores the date and adds the amount to the ' +
+            'balance', () => {
             // Arrange
             const expected = 400;
             // Act
@@ -99,7 +111,8 @@ describe('Account Class Tests: ', () => {
             expect(testAccount.getBalance()).toEqual(expected);
         });
 
-        it('5.2 Should only allow a number as amount in the withdrawal method', () => {
+        it('4.2 Should only allow a number as amount in the withdrawal method',
+            () => {
             // Arrange
             const expected = 1000;
             // Act
@@ -108,7 +121,8 @@ describe('Account Class Tests: ', () => {
             expect(testAccount.getBalance()).toEqual(expected);
         });
 
-        it('5.3 Should only allow a positive number in the withdrawal method', () => {
+        it('4.3 Should only allow a positive number in the withdrawal method',
+            () => {
             // Arrange
             const expected = 1000;
             // Act
@@ -117,7 +131,8 @@ describe('Account Class Tests: ', () => {
             expect(testAccount.getBalance()).toEqual(expected);
         });
 
-        it('5.4 Should only allow an amount which is not falsy in the withdrawal method', () => {
+        it('4.4 Should only allow an amount which is not falsy in the ' +
+            'withdrawal method', () => {
             // Arrange
             const expected = 1000;
             // Act
@@ -126,7 +141,8 @@ describe('Account Class Tests: ', () => {
             expect(testAccount.getBalance()).toEqual(expected);
         });
 
-        it('5.5 Should only allow a withdrawal if the amount is not larger than the account balance', () => {
+        it('4.5 Should only allow a withdrawal if the amount is not larger ' +
+            'than the account balance', () => {
             // Arrange
             const expected = 1000;
             // Act            
@@ -135,10 +151,13 @@ describe('Account Class Tests: ', () => {
             expect(testAccount.getBalance()).toEqual(expected);
         });
 
-        it('6.2 Should have a callback function in the withdrawal method of the Account class', () => {
+        it('5.2 Should have a callback function in the withdrawal method of ' +
+            'the Account class', () => {
             // Arrange
             const testCallback = jasmine.createSpy('Test Callback');
-            // Act            
+            // Act  
+            //* Callback function would be MessagePrinter.printMessage() 
+            //* in production code
             testAccount.withdrawal('10/01/2012', 600, testCallback);
             // Assert
             expect(testCallback).toHaveBeenCalled();
@@ -146,7 +165,8 @@ describe('Account Class Tests: ', () => {
     });
 
     describe('Transaction Formatter Functionality Tests: ', () => {
-        it('7.1 Should have a title row for the transactions in the default terminal display as specified in the README file', (() => {
+        it('6.1 Should have a title row for the transactions in the default ' +
+            'terminal display as specified in the README file', (() => {
             // Arrange
             const expected = 'date       || credit  || debit  || balance\n';
             // Act
@@ -155,7 +175,8 @@ describe('Account Class Tests: ', () => {
             expect(actual).toEqual(expected);
         }))
 
-        it('7.2 Should have information of the default deposits ready in the format as specified in the README file', (() => {
+        it('6.2 Should have information of the default deposits ready in the ' +
+            'format as specified in the README file', (() => {
             // Arrange            
             const expected = '10/01/2012 || 1000.00 ||        || 1000.00\n';            
             // Act
@@ -164,7 +185,8 @@ describe('Account Class Tests: ', () => {
             expect(testAccount.getTransactions()).toContain(expected);
         }))
 
-        it('7.3 Should have information of the default withdrawal ready in the format as specified in the README file', (() => {
+        it('6.3 Should have information of the default withdrawal ready in ' +
+            'the format as specified in the README file', (() => {
             // Arrange
             testAccount.deposit('10/01/2012', 1000);
             testAccount.deposit('13/01/2012', 2000);
@@ -175,7 +197,8 @@ describe('Account Class Tests: ', () => {
             expect(testAccount.getTransactions()).toContain(expected);
         }))
 
-        it('7.4 Should organise the default transactions in the format as specified in the README file', (() => {
+        it('6.4 Should organise the default transactions in the format as ' +
+            'specified in the README file', (() => {
             // Arrange
             testAccount.deposit('10/01/2012', 1000);
             testAccount.deposit('13/01/2012', 2000);

@@ -2,7 +2,7 @@
 
 In light of the client's requirements, six user stories have been identified. To accomplish the goals in the user stories, tests have been designed and conducted to ensure that the production code would deliver the desired outcome. To adhere to the principle of single responsibility, the third party testing framework, Jasmine, has been used in tests where two classes are involved so that tests remain independent, ensuring minimal coupling.
 
-Please see below the user stories listed in bullet points, the domain models created for the stories to describe how the objects use messages to communicate with one another, and the associated tests for the stories. The link to the miro board containing a Kanban board tracking the work progress is also provided [here](https://miro.com/app/board/uXjVKPOIEGE=/?moveToWidget=3458764587028545753&cot=14).
+Please see below the user stories listed in bullet points, the domain models created for the stories to describe how the objects use messages to communicate with one another, and the associated tests for the stories. The link to the miro board containing a Kanban board tracking the work progress is also provided [here](https://miro.com/app/board/uXjVKSab-T8=/?moveToWidget=3458764587932867689&cot=14).
 
 ## User Stories, Domain Models and Tests
 

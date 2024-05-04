@@ -33,23 +33,15 @@ describe('Date Generator Class Test: ', () => {
         })
     })
 
-    describe('Generate Custom Date Functionality Tests: ', () => {
-        it('2.3 Should be able to generate a custom date with the ' +
-            'generateCustomDate method', () => {
+    describe('Get Default Date Functionality Test: ', () => {
+        it('2.3 Should be able to get default dates for initialisation of the terminal', () => {
             // Arrange
-            const expected = '05/06/2024';
+            const expected = ['10/01/2012', '13/01/2012', '14/01/2012'];
             // Act
-            const actual = DateGenerator.generateCustomDate(5, 'Jun', 2024);
-            // Assert
-            expect(actual).toEqual(expected);
-        })
-
-        it('2.4 Should validate that only a valid date can be used in the ' +
-            'generateCustomDate method - invalid date', () => {            
-            // Arrange
-            const expected = 'The date inputted is invalid, please try again.';
-            // Act
-            const actual = DateGenerator.generateCustomDate(39, 'Jan', 2024);
+            const defaultDate1 = DateGenerator.getDefaultDate1();
+            const defaultDate2 = DateGenerator.getDefaultDate2();
+            const defaultDate3 = DateGenerator.getDefaultDate3();
+            const actual = Array(defaultDate1, defaultDate2, defaultDate3);
             // Assert
             expect(actual).toEqual(expected);
         })

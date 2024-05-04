@@ -15,9 +15,9 @@ console.log(chalk.green('Display on terminal on load:\n' +
     'she would see -\n'))
 
 const demoAccount = new Account();
-// demoAccount.deposit(DateGenerator.getDefaultDate1(), 1000);
-// demoAccount.deposit(DateGenerator.getDefaultDate2(), 2000);
-// demoAccount.withdrawal(DateGenerator.getDefaultDate3(), 500);
+demoAccount.deposit(DateGenerator.getDefaultDate1(), 1000);
+demoAccount.deposit(DateGenerator.getDefaultDate2(), 2000);
+demoAccount.withdrawal(DateGenerator.getDefaultDate3(), 500);
 demoAccount.getTransactions();
 
 console.log(chalk.grey('(From now on, today\'s date is generated ' +
